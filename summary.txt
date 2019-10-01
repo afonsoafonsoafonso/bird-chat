@@ -1,0 +1,31 @@
+- Product:
+    - Sub product
+    - ...
+
+- Team - Done
+
+- Tools:
+    - Git
+    - Project Management
+    - Editors:
+        - Code
+        - UML
+        - Wiki/MD page
+
+- Vision (1 par)
+
+- Features/Requirements/Mockups/Use cases/Uses stories
+
+- Concepts (Domain Analysis, class diagram)
+
+----------------------------------------
+
+- Code / sw / Apps
+
+- Mobile:
+    - Microbits
+    - RP
+    - Cameras
+    - ...
+
+- Servers
