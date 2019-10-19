@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bird_chat/create_page.dart';
 
 void main() {
   runApp(NavigationExampleApp());
@@ -9,7 +10,7 @@ class NavigationExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // The MaterialApp's home is automatically set as the bottom of the navigation stack
     return MaterialApp(
-      title: 'Navigation Example',
+      title: 'Bird Chat',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -31,7 +32,7 @@ class FirstScreen extends StatelessWidget {
           onPressed: () {
             // Pushs the SecondScreen widget onto the navigation stack
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => SecondScreen()));
+                .push(MaterialPageRoute(builder: (_) => CreatePage()));
           },
         ),
       ),
