@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 
+
+
 // Define a custom Form widget.
-class MyCustomForm extends StatefulWidget {
+class CreationForm extends StatefulWidget {
   @override
-  MyCustomFormState createState() {
-    return MyCustomFormState();
+  CreationFormState createState() {
+    return CreationFormState();
   }
 }
 
+
+
 // Define a corresponding State class.
 // This class holds data related to the form.
-class MyCustomFormState extends State<MyCustomForm> {
+class CreationFormState extends State<CreationForm> {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   //
   // Note: This is a `GlobalKey<FormState>`,
-  // not a GlobalKey<MyCustomFormState>.
+  // not a GlobalKey<CreationFormState>.
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -32,8 +36,19 @@ class MyCustomFormState extends State<MyCustomForm> {
                 }
                 return null;
               },
-              decoration: InputDecoration(labelText: 'Enter your stuff'),
+              decoration: InputDecoration(labelText: 'Group Creation'),
             ),
+            const SizedBox(height: 30),
+            TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+              decoration: InputDecoration(labelText: 'Topics'),
+            ),
+            const SizedBox(height: 30),
             RaisedButton(
               onPressed: () {
                 // Validate returns true if the form is valid, otherwise false.
@@ -54,7 +69,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     Color(0xFF1976D2),
                     Color(0xFF42A5F5),
                   ])),
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: const Text('Submit', style:TextStyle(fontSize: 20)),
                   ),
             )
