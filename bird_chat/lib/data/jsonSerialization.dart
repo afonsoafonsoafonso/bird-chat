@@ -1,16 +1,18 @@
 class Person {
   const Person({
     this.name,
-    this.email,
+    this.key,
   });
 
   final String name;
-  final String email;
+  final String key;
+ // final List<String> affilition;
+
 
   factory Person.fromJson(Map<String, dynamic> json) {
     if (json == null) return null;
 
-    return Person(name: json['name'] as String, email: json['email'] as String);
+    return Person(name: json['name'] as String, key: json['key'] as String);
   }
 }
 
