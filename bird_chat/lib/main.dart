@@ -1,7 +1,7 @@
+import 'package:bird_chat/routingConstants.dart';
 import 'package:flutter/material.dart';
-import 'package:bird_chat/screens/create_page.dart';
-import 'package:bird_chat/screens/FirstScreen.dart';
-import 'package:bird_chat/routes.dart';
+import 'package:bird_chat/screens/undefinedView.dart';
+import 'router.dart' as router;
 
 void main() {
   runApp(NavigationExampleApp());
@@ -16,7 +16,9 @@ class NavigationExampleApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: FirstScreen(),
+      onGenerateRoute: router.generateRoute,
+      initialRoute: HomeViewRoute,
+      //onUnknownRoute:(settings)=> MaterialPageRoute(builder: (context) => UndefinedView(name: settings.name)),
     );
   }
 }
@@ -24,20 +26,4 @@ class NavigationExampleApp extends StatelessWidget {
 
 
 
-class CreateScreen extends StatelessWidget {
- @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Second Screen'),
-      ),
-      body: Center(
-        child: RaisedButton(
-          child: const Text('Go to First'),
-          // Pops Second Screen off the navigation stack
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
-    );
-  }
-}
+
