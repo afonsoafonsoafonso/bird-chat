@@ -1,6 +1,5 @@
 import 'package:bird_chat/routingConstants.dart';
 import 'package:flutter/material.dart';
-import 'package:bird_chat/screens/undefinedView.dart';
 import 'router.dart' as router;
 
 void main() {
@@ -17,7 +16,7 @@ class NavigationExampleApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       onGenerateRoute: router.generateRoute,
-      initialRoute: HomeViewRoute,
+      initialRoute: CreateGroupRoute,
       //onUnknownRoute:(settings)=> MaterialPageRoute(builder: (context) => UndefinedView(name: settings.name)),
     );
   }
