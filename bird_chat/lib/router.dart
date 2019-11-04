@@ -1,4 +1,4 @@
-//import 'package:bird_chat/screens/create_page.dart';
+import 'package:bird_chat/screens/create_page.dart';
 import 'package:bird_chat/screens/screen1.dart';
 import 'package:bird_chat/screens/undefinedView.dart';
 import 'package:flutter/material.dart';
