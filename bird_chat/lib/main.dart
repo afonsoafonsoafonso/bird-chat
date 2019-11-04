@@ -16,7 +16,7 @@ class NavigationExampleApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       onGenerateRoute: router.generateRoute,
-      initialRoute: CreateGroupRoute,
+      initialRoute: HomeViewRoute,
       //onUnknownRoute:(settings)=> MaterialPageRoute(builder: (context) => UndefinedView(name: settings.name)),
     );
   }
