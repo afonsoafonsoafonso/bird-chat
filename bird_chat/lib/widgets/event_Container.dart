@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bird_chat/widgets/tag.dart';
+import 'package:bird_chat/widgets/event_DropDown_Container.dart';
 
 class EventContainer extends StatefulWidget {
 
@@ -16,33 +16,44 @@ class _EventContainer extends State<EventContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blueAccent,
       margin: const EdgeInsets.only(bottom: 10),
+      decoration: BoxDecoration (
+        border: Border.all(),
+      ),
       child: Column (
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget> [
           Row (
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget> [
-              Container(
-                height: 50,
-                padding: EdgeInsets.only(left: 7, top: 7, bottom: 7),
-                child: Column (
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      child: Text(
-                        'Titulo da conversa so que grande o suficiente',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+              Expanded (
+                flex: 7, 
+                child: Container (
+                  height: 50,
+                  padding: EdgeInsets.only(left: 7, top: 7, bottom: 7),
+                  child: Column (
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        child: Flexible (
+                          child: Text(
+                            'Titulo da conversa so que grande o suficiente ahahahah',
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ) 
+                      ),
+                      Container(
+                        child: Text(
+                          'Local da conversa igualmente grande',
+                          overflow: TextOverflow.ellipsis
                         ),
                       ),
-                    ),
-                    Container(
-                      child: Text('Local da conversa igualmente grande'),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               Container(
@@ -63,49 +74,7 @@ class _EventContainer extends State<EventContainer> {
             ]
           ),
           Visibility(
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(width: 2.0, color: Colors.white),
-                )
-              ),
-              child: Column (
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget> [
-                  Container(
-                    margin: EdgeInsets.only(left: 10, top: 10, bottom: 10),
-                    child: Text(
-                      'Starts: 15:30h - 29/10/2019',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 10, top: 10, bottom: 10, left: 10),
-                    child: Text(
-                      'General description of what a group is. Not that long, not that small, just right. Like yo momma!'
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 10, top: 10, bottom: 20, left: 10),
-                    child: Wrap(
-                      spacing: 10,
-                      children: <Widget> [
-                        new Tag(),
-                        new Tag(),
-                        new Tag(),
-                        new Tag(),
-                        new Tag(),
-                        new Tag(),
-                        new Tag(),
-                      ],
-                    ),
-                  ),
-                ]
-              ),
-            ),
+            child: new EventDropDownContainer(),
             visible: isOpen? true : false,
           ),
         ]

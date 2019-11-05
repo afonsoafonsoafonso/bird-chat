@@ -59,6 +59,7 @@ class _Home extends State<Home> {
                 icon: Icon(
                   Icons.search,
                 ),
+                onPressed: () {},
               ),
               new IconButton(
                 icon: Icon(
@@ -82,7 +83,10 @@ class _Home extends State<Home> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add
+        ),
+        onPressed: () {},
       ),
     );
   }
