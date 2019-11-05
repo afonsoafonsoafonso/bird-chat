@@ -1,4 +1,3 @@
-
 1.  `screens` — Contains the screens of your application. All files from here get imported into  `routes.dart`
 2.  `util` — Contains the utilities/common functions of your application
 3.  `widgets` — Contains the common widgets for your applications. For example,  `Button` ,  `TextField`  etc.
