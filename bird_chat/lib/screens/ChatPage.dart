@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class ChatPage extends StatelessWidget {
+  static const String route = "/chat";
 
   @override
   Widget build(BuildContext context) {
