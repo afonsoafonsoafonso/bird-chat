@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/home_body.dart';
 import 'package:bird_chat/widgets/myEvents_body.dart';
+import 'package:bird_chat/widgets/event_notification.dart';
 
 class Home extends StatefulWidget {
 
@@ -61,23 +62,28 @@ class _Home extends State<Home> {
                 ),
                 onPressed: () {},
               ),
-              new IconButton(
-                icon: Icon(
-                  Icons.event,
-                ),
-                onPressed: () {
-                  setState(() {
+              new Stack(
+                children: <Widget>[
+                  new IconButton(
+                    icon: Icon(
+                      Icons.event,
+                    ),
+                    onPressed: () {
+                      setState(() {
 
-                    if(page == "MyEvents") {
-                      return;
-                    }
+                        if(page == "MyEvents") {
+                          return;
+                        }
 
-                    page = "MyEvents";
-                    pageBody = new MyEventsBody();
+                        page = "MyEvents";
+                        pageBody = new MyEventsBody();
 
-                  });
-                },
-              ),
+                      });
+                    },
+                  ),
+                  new EventNotification(),
+                ]
+              )
             ],
           ),
         ),

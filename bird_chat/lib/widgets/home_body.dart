@@ -18,14 +18,7 @@ class HomeBody extends StatelessWidget {
               new EventContainer(),
               new EventContainer(),
               new EventContainer(),
-              new EventContainer(),
-              new EventContainer(),
-              new EventContainer(),
-              new EventContainer(),
-              new EventContainer(),
-              new EventContainer(),
-              new EventContainer(),
-              new EventContainer(),
+              //aumentar tamanho cos containers acrescentar padding no seu interior
             ]
           )
         ),

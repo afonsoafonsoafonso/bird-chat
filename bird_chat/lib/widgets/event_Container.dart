@@ -15,11 +15,7 @@ class _EventContainer extends State<EventContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      decoration: BoxDecoration (
-        border: Border.all(),
-      ),
+    return Card (
       child: Column (
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget> [
