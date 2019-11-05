@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CreatePage extends StatefulWidget {
+
+  static const String route = '/create';
+
   @override
   _CreatePageState createState() => _CreatePageState();
 }
@@ -8,16 +11,9 @@ class CreatePage extends StatefulWidget {
 class _CreatePageState extends State<CreatePage> {
   final _formKey = GlobalKey<FormState>();
   
-  
   TextEditingController nameController = TextEditingController();
   TextEditingController locationController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-
-
-
-
-
- 
 
   @override
   Widget build(BuildContext context) {
