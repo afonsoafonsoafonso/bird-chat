@@ -37,16 +37,27 @@ class _ChatFormState extends State<ChatForm> {
     super.dispose();
   }
 
+  Widget drawTextField() {
+    return Flexible(
+      child: TextField(
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          contentPadding: EdgeInsets.all(10),
+        ),
+        controller: this.textController,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Row(
         children: <Widget>[
-          Flexible(
-            child: TextField(
-              controller: this.textController,
-            ),
-          ),
+          drawTextField()
+          ,
           FloatingActionButton(
             mini: true,
             clipBehavior: Clip.antiAlias,
@@ -55,6 +66,8 @@ class _ChatFormState extends State<ChatForm> {
           )
         ],
       ),
+      padding: EdgeInsets.all(5),
+      color: Theme.of(context).backgroundColor,
     );
   }
 
@@ -90,14 +103,28 @@ class _MessageListState extends State<MessageList> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(bottom: 5),
-            child: Text("username$i", style: TextStyle(
-
-              fontWeight: FontWeight.bold,
-            ),),
+            margin: EdgeInsets.only(top: 10, bottom: 5),
+            child: Row(
+              children: <Widget>[
+                Icon(Icons.person),
+                Container(
+                  margin: EdgeInsets.only(left: 5),
+                  child: Text(
+                    "username$i",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           Container(
-            margin: EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(1, 1, 1, 0.05),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
             child: Text("$text"),
           )
         ],
@@ -118,20 +145,13 @@ class _MessageListState extends State<MessageList> {
         controller: scrollController,
         scrollDirection: Axis.vertical,
         reverse: true,
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(5),
         itemBuilder: (context,i) {
-          if (i % 2 == 1) {
-            return Divider(
-              thickness: 2,
-            );
-          }
-
-          int index = i ~/ 2;
-          if (index >= messages.length) {
+          if (i >= messages.length) {
             _populateMessages();
           }
 
-          return _buildMessageCard(index, messages[index]);
+          return _buildMessageCard(i, messages[i]);
         },
       ),
     );
