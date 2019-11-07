@@ -39,7 +39,7 @@ class _CreatePageState extends State<CreatePage> {
                   child: Column(
                     children: [
                       new TextFormControlled(
-                        //inputFormater: ValidatorInputFormatter(editingValidator: SimpleTextRegex()),
+                        inputFormater: ValidatorInputFormatter(editingValidator: SimpleTextRegex()),
                         labelText: 'Enter Group Name',
                         hintText: 'Ex: AI and beers',
                         icon: Icons.group, //WIP
