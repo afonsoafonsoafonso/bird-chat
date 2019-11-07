@@ -12,9 +12,7 @@ class CreatePage extends StatefulWidget {
 class _CreatePageState extends State<CreatePage> {
   final _formKey = GlobalKey<FormState>();
 
-  TextEditingController nameController = TextEditingController();
-  TextEditingController locationController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -41,28 +39,30 @@ class _CreatePageState extends State<CreatePage> {
                   child: Column(
                     children: [
                       new TextFormControlled(
-                        nameController: nameController,
+                        //inputFormater: ValidatorInputFormatter(editingValidator: SimpleTextRegex()),
                         labelText: 'Enter Group Name',
                         hintText: 'Ex: AI and beers',
                         icon: Icons.group, //WIP
                       ),
                       new TextFormControlled(
-                        nameController: nameController,
+                       // nameController: locationController,
                         labelText: 'Enter Location',
                         icon: Icons.location_on,
                       ),
                       new TextFormControlled(
-                        nameController: nameController,
+                       // nameController: nameController,
                         labelText: 'Enter Starting Hour',
                         icon: Icons.access_alarm,
+                        textInputType: TextInputType.datetime,
+
                       ),
                       new TextFormControlled(
-                        nameController: nameController,
+                       // nameController: nameController,
                         labelText: 'Enter Description',
                         icon: Icons.description,
                       ),
                       new TextFormControlled(
-                        nameController: nameController,
+                        //nameController: nameController,
                         labelText: 'Figuring out How will tags be in here',
                         icon: Icons.error,
                       ),
