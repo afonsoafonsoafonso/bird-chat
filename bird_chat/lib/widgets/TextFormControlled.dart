@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class TextFormControlled extends StatelessWidget {
   const TextFormControlled({
     Key key,
-    @required this.nameController,
+    this.inputFormater,
     this.labelText = " ",
     this.hintText = " ",
     this.icon  ,
+    this.textInputType,
   }) : super(key: key);
 
-  final TextEditingController nameController;
+  final TextInputFormatter inputFormater;
   final String labelText;
   final String hintText;
   final icon;
+  final TextInputType textInputType;
   @override
   Widget build(BuildContext context) {
+
     return Padding(
         padding: const EdgeInsets.only(bottom: 8.0),
         child: TextField(
-          controller: nameController,
+          inputFormatters: [inputFormater],
           decoration: InputDecoration(
             labelText: labelText,
             hintText: hintText,
             icon: Icon(icon),
+          
           ),
+          keyboardType: textInputType,
         ));
   }
 }

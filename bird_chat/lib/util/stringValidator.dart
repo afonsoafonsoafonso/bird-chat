@@ -45,6 +45,6 @@ class ValidatorInputFormatter implements TextInputFormatter {
 
 class SimpleTextRegex extends RegexValidator{
   SimpleTextRegex():super (regexSource:
-   "^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*\$");
+   "^[A-Za-z0-9 _]*\$");
 
 }
