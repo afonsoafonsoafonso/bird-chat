@@ -23,7 +23,9 @@ class _Home extends State<Home> {
     centerTitle: true,
     elevation: 1.0,
     title: SizedBox(
-        height: 35.0, child: Image.asset("assets/images/flock_logo.png")),
+        height: 35.0, 
+        //child: Image.asset("assets/images/flock_logo.png")
+    ),
   );
 
   @override

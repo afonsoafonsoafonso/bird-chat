@@ -1,5 +1,3 @@
-
-import 'package:bird_chat/screens/ChatPage.dart';
 import 'package:flutter/material.dart';
 import 'package:bird_chat/screens/home.dart';
 import 'router.dart' as router;
@@ -12,7 +10,6 @@ void main() {
       debugShowCheckedModeBanner: false,
       onGenerateRoute: router.generateRoute,
       initialRoute: Home.route,
-      
     )
   );
 }

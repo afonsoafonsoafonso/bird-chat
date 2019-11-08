@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import 'package:bird_chat/screens/home.dart';
-=======
 import 'package:bird_chat/screens/ChatPage.dart';
->>>>>>> chat-window
 import 'package:flutter/material.dart';
 import 'package:bird_chat/screens/CreatePage.dart';
 import 'package:bird_chat/screens/UndefinedView.dart';
