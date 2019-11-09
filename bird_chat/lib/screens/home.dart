@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:bird_chat/widgets/home_body.dart';
 import 'package:bird_chat/widgets/myEvents_body.dart';
+import 'package:bird_chat/widgets/home_body2.dart';
+
+List<EventOverview> events = generateEvents(30);
+
+List<EventOverview> generateEvents(int eventsNo) {
+  return List.generate(eventsNo, (int index) {
+    return EventOverview(
+      eventName: 'Talking about very nice tecnology #$index w/ Sr Julio',
+      eventTimeLocation: '$index/04/20 18h30 @ Bar da Biblio',
+      eventSummary: 'Quem ler isto é ganda gay looooooooooooooooooooooooooooooooooooooooooooooooool',
+    );
+  });
+}
 
 class Home extends StatefulWidget {
 
@@ -12,8 +24,7 @@ class Home extends StatefulWidget {
 
 class _Home extends State<Home> {
   String page = "Home";
-
-  Widget pageBody = new HomeBody();
+  Widget pageBody = HomeBody(events: events);
 
   final topBar = new AppBar(
     backgroundColor: Colors.blueAccent,
@@ -27,6 +38,7 @@ class _Home extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+
     return new Scaffold(
       appBar: topBar,
       body: pageBody,
@@ -50,7 +62,7 @@ class _Home extends State<Home> {
                     }
 
                     page = "Home";
-                    pageBody = new HomeBody();
+                    pageBody = HomeBody(events: events);
                     
                   });
                 },
