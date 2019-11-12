@@ -3,14 +3,23 @@ import 'package:http/http.dart' as http;
 import 'package:bird_chat/models/events.dart';
 
 
-class MyEventsPageService {
+class EventsService {
 
-  static String url = "https://api.myjson.com/bins/18y4ca";
+  static String homeEvents = "https://api.myjson.com/bins/a6em2";
+  static String myEvents = "https://api.myjson.com/bins/18y4ca";
 
-  static Future<List<Event>> getEvents() async {
+  static Future<List<Event>> getEvents(String typeOfEvents) async {
 
     try {
-      final response = await http.get(url);
+      var response;
+
+      if(typeOfEvents == 'homeEvents') {
+        response = await http.get(homeEvents);
+      }
+      else if(typeOfEvents == 'myEvents') {
+        response = await http.get(myEvents);
+      }
+
 
       if(response.statusCode == 200) {
         List<Event> list = parseEvents(response.body);

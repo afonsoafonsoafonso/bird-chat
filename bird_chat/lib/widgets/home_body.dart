@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/event_Container.dart';
 
 import 'package:bird_chat/models/events.dart';
-import 'package:bird_chat/services/homePageService.dart';
+import 'package:bird_chat/services/eventsService.dart';
 
 
 class HomeBody extends StatelessWidget {
 
   final List<Event> events = [];
   Future<List<Event>> _events() async {
-    return HomePageService.getEvents();
+    return EventsService.getEvents('homeEvents');
   }
 
   @override
