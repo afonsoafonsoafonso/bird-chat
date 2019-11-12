@@ -32,7 +32,7 @@ class _EventContainer extends State<EventContainer> {
               Expanded (
                 flex: 7, 
                 child: Container (
-                  height: 50,
+                  height: MediaQuery.of(context).size.height * 0.07,
                   padding: EdgeInsets.only(left: 7, top: 7, bottom: 7),
                   child: Column (
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
