@@ -12,6 +12,7 @@ class EventsService {
 
     try {
       var response;
+      List<Event> list;
 
       if(typeOfEvents == 'homeEvents') {
         response = await http.get(homeEvents);
@@ -19,13 +20,18 @@ class EventsService {
       else if(typeOfEvents == 'myEvents') {
         response = await http.get(myEvents);
       }
+      else {
+        return list;
+      }
 
 
       if(response.statusCode == 200) {
-        List<Event> list = parseEvents(response.body);
+        list = parseEvents(response.body);
 
         return list;
       }
+
+      return list;
 
     } catch (e) {
       throw Exception(e.toString());
