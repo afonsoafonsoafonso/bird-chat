@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/home_body.dart';
 import 'package:bird_chat/widgets/myEvents_body.dart';
 import 'package:bird_chat/widgets/event_notification.dart';
+import 'CreatePage.dart';
 
 
 class Home extends StatefulWidget {
+  static const String route = '/';
 
   @override
   State<StatefulWidget> createState() {
@@ -46,14 +48,12 @@ class _Home extends State<Home> {
                 ),
                 onPressed: () {
                   setState(() {
-
-                    if(page == "Home") {
+                    if (page == "Home") {
                       return;
                     }
 
                     page = "Home";
                     pageBody = new HomeBody();
-                    
                   });
                 },
               ),
@@ -63,38 +63,55 @@ class _Home extends State<Home> {
                 ),
                 onPressed: () {},
               ),
-              new Stack(
-                children: <Widget>[
-                  new IconButton(
-                    icon: Icon(
-                      Icons.event,
-                    ),
-                    onPressed: () {
-                      setState(() {
-
-                        if(page == "MyEvents") {
-                          return;
-                        }
-
-                        page = "MyEvents";
-                        pageBody = new MyEventsBody();
-
-                      });
-                    },
+              new Stack(children: <Widget>[
+                new IconButton(
+                  icon: Icon(
+                    Icons.event,
                   ),
-                  new EventNotification(),
-                ]
-              )
+                  onPressed: () {
+                    setState(() {
+                      if (page == "MyEvents") {
+                        return;
+                      }
+
+                      page = "MyEvents";
+                      pageBody = new MyEventsBody();
+                    });
+                  },
+                ),
+                new EventNotification(),
+              ])
             ],
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(
-          Icons.add
-        ),
-        onPressed: () {},
+          child: const Icon(Icons.add),
+          onPressed: () {
+            Navigator.pushNamed(context, CreatePage.route);
+          },
+          tooltip: 'Create New Group',
       ),
+          drawer: Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                DrawerHeader(
+                  child: Text('Header'),
+                  decoration: BoxDecoration(color: Colors.blue),
+                ),
+                ListTile(
+                  title: Text('My Profile'),
+                  onTap:(){
+                    Navigator.pop(context);
+                    //filler until we have profile app
+                    Navigator.pushNamed(context, CreatePage.route);
+
+                  }
+                )
+              ],
+            ),
+          ),
     );
   }
 }
