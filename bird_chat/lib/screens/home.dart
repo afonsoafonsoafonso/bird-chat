@@ -1,3 +1,5 @@
+import 'package:bird_chat/screens/ChatPage.dart';
+import 'package:bird_chat/screens/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/home_body.dart';
 import 'package:bird_chat/widgets/myEvents_body.dart';
@@ -105,7 +107,16 @@ class _Home extends State<Home> {
                   onTap:(){
                     Navigator.pop(context);
                     //filler until we have profile app
-                    Navigator.pushNamed(context, CreatePage.route);
+                    Navigator.pushNamed(context, ProfilePage.route);
+
+                  }
+                ),
+                ListTile(
+                  title: Text('Example Chat'),
+                  onTap:(){
+                    Navigator.pop(context);
+                    //filler until we have profile app
+                    Navigator.pushNamed(context, ChatPage.route);
 
                   }
                 )
