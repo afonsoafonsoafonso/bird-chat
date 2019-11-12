@@ -2,7 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+
+
 class ProfilePage extends StatelessWidget {
+
+    static const String route = 'profile';
+
   _launchURL() async {
     const url = 'http://dardin88.github.io';
     if (await canLaunch(url)) {
