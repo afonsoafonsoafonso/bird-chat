@@ -46,7 +46,11 @@ class MyEventsBody extends StatelessWidget {
               return Expanded (
                 child: Container (
                   child: Center (
-                    child: Text("Loading"),
+                    child: Image.asset(
+                      "imgs/loading.gif",
+                      height: MediaQuery.of(context).size.height * 1,
+                      width: MediaQuery.of(context).size.width * 1,
+                    ),
                   )
                 )
               );
