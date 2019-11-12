@@ -2,11 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+class Profile {
+  Profile({this.name, this.picUrl, this.bio, this.affiliation, this.url});
+
+  final String picUrl;
+  final String name;
+  final String bio;
+  final String affiliation;
+  final String url;
+}
 
 
 class ProfilePage extends StatelessWidget {
-
-    static const String route = 'profile';
+  ProfilePage({@required this.profile});
+  
+  final Profile profile;
+  
+  static const String route = 'profile';
 
   _launchURL() async {
     const url = 'http://dardin88.github.io';
@@ -21,6 +33,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.blue,
+        appBar: AppBar(),
         body: SafeArea(
           child: Row(
             children: <Widget>[
@@ -39,10 +52,12 @@ class ProfilePage extends StatelessWidget {
                     CircleAvatar(
                       radius: 85,
                       backgroundImage: NetworkImage(
-                          'https://2019.programming-conference.org/getProfileImage/dariodinucci/6e954823-249a-484f-9dbf-e5462d7fa78e/small.jpg'),
-                    ),
+                          profile.picUrl,
+                          //'https://2019.programming-conference.org/getProfileImage/dariodinucci/6e954823-249a-484f-9dbf-e5462d7fa78e/small.jpg'),
+                    )),
                     Text(
-                      'Dario Di Nucci',
+                      //'Dario Di Nucci',
+                      profile.name,
                       style: TextStyle(
                         fontFamily: 'Pacifico',
                         fontSize: 35,
@@ -50,7 +65,8 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'I am a research fellow at the Software Languages Lab of the Vrije Universiteit Brussel in Belgium. I received the PhD in Management and Information Technology from the University of Salerno in 2018 advised by Prof. Andrea De Lucia with a thesis entitled Methods and Tools for Focusing and Prioritizing the Testing Effort.',
+                      profile.bio,
+                      //'I am a research fellow at the Software Languages Lab of the Vrije Universiteit Brussel in Belgium. I received the PhD in Management and Information Technology from the University of Salerno in 2018 advised by Prof. Andrea De Lucia with a thesis entitled Methods and Tools for Focusing and Prioritizing the Testing Effort.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 17,
@@ -83,7 +99,8 @@ class ProfilePage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  'Vrije Universiteit Brussel',
+                                  profile.affiliation,
+                                  //'Vrije Universiteit Brussel',
                                   style: TextStyle(fontSize: 18),
                                 ),
                               ],
@@ -104,7 +121,8 @@ class ProfilePage extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    'http://dardin88.github.io',
+                                    profile.url,
+                                    //'http://dardin88.github.io',
                                     style: TextStyle(fontSize: 18),
                                   ),
                                 ],

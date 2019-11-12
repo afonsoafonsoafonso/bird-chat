@@ -106,7 +106,7 @@ class _Home extends State<Home> {
                   onTap:(){
                     Navigator.pop(context);
                     //filler until we have profile app
-                    Navigator.pushNamed(context, ProfilePage.route);
+                    Navigator.pushNamed(context, ProfilePage.route, arguments: Profile(name: 'Dario Di Nucci', picUrl: 'https://2019.programming-conference.org/getProfileImage/dariodinucci/6e954823-249a-484f-9dbf-e5462d7fa78e/small.jpg', bio: 'I am a research fellow at the Software Languages Lab of the Vrije Universiteit Brussel in Belgium. I received the PhD in Management and Information Technology from the University of Salerno in 2018 advised by Prof. Andrea De Lucia with a thesis entitled Methods and Tools for Focusing and Prioritizing the Testing Effort.', url: 'http://dardin88.github.io', affiliation: 'Vrije Universiteit Brussel'));
 
                   }
                 )

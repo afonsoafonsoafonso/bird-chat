@@ -14,7 +14,7 @@ Route<dynamic> generateRoute(RouteSettings settings){
     case ChatPage.route:
       return MaterialPageRoute(builder: (context) => ChatPage());
     case ProfilePage.route:
-      return MaterialPageRoute(builder: (context) => ProfilePage());
+      return MaterialPageRoute(builder: (context) => ProfilePage(profile: settings.arguments));
     default:
       return MaterialPageRoute(builder: (context) => UndefinedView(name: settings.name));
   
