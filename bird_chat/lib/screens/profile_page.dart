@@ -19,8 +19,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.blue,
         body: SafeArea(
           child: Row(
@@ -127,7 +126,7 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      
     );
   }
 }
