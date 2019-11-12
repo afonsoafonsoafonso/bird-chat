@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/event_DropDown_Container.dart';
 
+import 'package:bird_chat/models/events.dart';
+
 class EventContainer extends StatefulWidget {
+
+  final Event event;
+
+  const EventContainer({this.event});
 
   @override
   State<StatefulWidget> createState() {
@@ -10,6 +16,7 @@ class EventContainer extends StatefulWidget {
 }
 
 class _EventContainer extends State<EventContainer> {
+
 
   bool isOpen = false;
 
@@ -34,7 +41,7 @@ class _EventContainer extends State<EventContainer> {
                       Container(
                         child: Flexible (
                           child: Text(
-                            'Titulo da conversa so que grande o suficiente ahahahah',
+                            widget.event.title,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -44,7 +51,7 @@ class _EventContainer extends State<EventContainer> {
                       ),
                       Container(
                         child: Text(
-                          'Local da conversa igualmente grande',
+                          widget.event.location,
                           overflow: TextOverflow.ellipsis
                         ),
                       ),
@@ -70,7 +77,11 @@ class _EventContainer extends State<EventContainer> {
             ]
           ),
           Visibility(
-            child: new EventDropDownContainer(),
+            child: new EventDropDownContainer(
+              startTime: widget.event.startTime,
+              description: widget.event.description,
+              tags: widget.event.tags
+            ),
             visible: isOpen? true : false,
           ),
         ]
