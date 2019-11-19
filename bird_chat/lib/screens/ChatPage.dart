@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -8,19 +10,16 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "chat_name"
-        ),
+        title: Text("chat_name"),
       ),
       body: Column(
-        children : <Widget> [
+        children: <Widget>[
           MessageList(),
           ChatForm(),
         ],
       ),
     );
   }
-  
 }
 
 class ChatForm extends StatefulWidget {
@@ -56,8 +55,7 @@ class _ChatFormState extends State<ChatForm> {
     return Container(
       child: Row(
         children: <Widget>[
-          drawTextField()
-          ,
+          drawTextField(),
           FloatingActionButton(
             mini: true,
             clipBehavior: Clip.antiAlias,
@@ -84,11 +82,13 @@ class MessageList extends StatefulWidget {
 }
 
 class _MessageListState extends State<MessageList> {
-
   final scrollController = new ScrollController();
-  final lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+  
+  final lorem =
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
-  final messages = <String>[];
+  final messages = <Message>[];
+  int idUser = 0;
 
   @override
   void initState() {
@@ -96,37 +96,49 @@ class _MessageListState extends State<MessageList> {
     _populateMessages();
   }
 
-  Widget _buildMessageCard(int i, String text) {
+
+  Widget _buildMessageCard(int i, Message msg) {
+
+    bool ownMessage = msg.id == idUser;
+
+    String username = msg.id == idUser ? "You" : "${msg.username}${msg.id}";
+
+    Widget userTitle = Container(
+      margin: EdgeInsets.only(top: 10, bottom: 5),
+      child: Row(
+        children: <Widget>[
+          Icon(Icons.person),
+          Container(
+            margin: EdgeInsets.only(left: 5),
+            child: Text(
+              username,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+
+    Color msgBg = ownMessage ? Theme.of(context).backgroundColor.withAlpha(190) : Color.fromRGBO(1, 1, 1, 0.05);
+
+    Widget textContainer = Container(
+      decoration: BoxDecoration(
+        color: msgBg,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+      child: Text("${msg.text}"),
+    );
+
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(top: 10, bottom: 5),
-            child: Row(
-              children: <Widget>[
-                Icon(Icons.person),
-                Container(
-                  margin: EdgeInsets.only(left: 5),
-                  child: Text(
-                    "username$i",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(1, 1, 1, 0.05),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-            child: Text("$text"),
-          )
+          userTitle,
+          textContainer
         ],
       ),
     );
@@ -134,7 +146,13 @@ class _MessageListState extends State<MessageList> {
 
   void _populateMessages() {
     for (int i = 0; i < 10; i++) {
-      messages.add(lorem);
+      int id = Random().nextInt(10);
+      messages.add(new Message(
+        id: id,
+        username: "user",
+        text: lorem,
+        timestamp: 0
+      ));
     }
   }
 
@@ -146,7 +164,7 @@ class _MessageListState extends State<MessageList> {
         scrollDirection: Axis.vertical,
         reverse: true,
         padding: EdgeInsets.all(5),
-        itemBuilder: (context,i) {
+        itemBuilder: (context, i) {
           if (i >= messages.length) {
             _populateMessages();
           }
@@ -156,4 +174,13 @@ class _MessageListState extends State<MessageList> {
       ),
     );
   }
+}
+
+class Message {
+  final int id;
+  final String username;
+  final String text;
+  final int timestamp;
+
+  Message({this.id, this.username, this.timestamp, this.text});
 }
