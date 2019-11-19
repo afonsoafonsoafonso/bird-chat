@@ -1,8 +1,11 @@
+import 'package:bird_chat/screens/ChatPage.dart';
+import 'package:bird_chat/screens/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/home_body.dart';
 import 'package:bird_chat/widgets/myEvents_body.dart';
 import 'package:bird_chat/widgets/event_notification.dart';
 import 'CreatePage.dart';
+
 
 class Home extends StatefulWidget {
   static const String route = '/';
@@ -23,10 +26,10 @@ class _Home extends State<Home> {
     centerTitle: true,
     elevation: 1.0,
     title: SizedBox(
-        height: 35.0, 
-        //child: Image.asset("assets/images/flock_logo.png")
+      height: 35.0
     ),
   );
+
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +107,16 @@ class _Home extends State<Home> {
                   onTap:(){
                     Navigator.pop(context);
                     //filler until we have profile app
-                    Navigator.pushNamed(context, CreatePage.route);
+                    Navigator.pushNamed(context, ProfilePage.route);
+
+                  }
+                ),
+                ListTile(
+                  title: Text('Example Chat'),
+                  onTap:(){
+                    Navigator.pop(context);
+                    //filler until we have profile app
+                    Navigator.pushNamed(context, ChatPage.route);
 
                   }
                 )
