@@ -10,7 +10,7 @@ void main() {
       title: 'Bird Chat',
       debugShowCheckedModeBanner: false,
       onGenerateRoute: router.generateRoute,
-      initialRoute: ChatPage.route,
+      initialRoute: Home.route,
     )
   );
 }
