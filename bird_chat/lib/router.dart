@@ -1,3 +1,4 @@
+import 'package:bird_chat/screens/GroupInfoPage.dart';
 import 'package:bird_chat/screens/home.dart';
 import 'package:bird_chat/screens/ChatPage.dart';
 import 'package:bird_chat/screens/profile_page.dart';
@@ -15,6 +16,8 @@ Route<dynamic> generateRoute(RouteSettings settings){
       return MaterialPageRoute(builder: (context) => ChatPage());
     case ProfilePage.route:
       return MaterialPageRoute(builder: (context) => ProfilePage());
+    case GroupInfoPage.route:
+      return MaterialPageRoute(builder: (context) => GroupInfoPage());
     default:
       return MaterialPageRoute(builder: (context) => UndefinedView(name: settings.name));
   

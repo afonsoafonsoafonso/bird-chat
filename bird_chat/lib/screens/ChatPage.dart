@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:bird_chat/screens/GroupInfoPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -11,6 +12,14 @@ class ChatPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("chat_name"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              Navigator.pushNamed(context, GroupInfoPage.route);
+            },
+          )
+        ],
       ),
       body: Column(
         children: <Widget>[
@@ -88,7 +97,7 @@ class _MessageListState extends State<MessageList> {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
   final messages = <Message>[];
-  int idUser = 0;
+  String idUser = "0";
 
   @override
   void initState() {
@@ -99,9 +108,9 @@ class _MessageListState extends State<MessageList> {
 
   Widget _buildMessageCard(int i, Message msg) {
 
-    bool ownMessage = msg.id == idUser;
+    bool ownMessage = msg.key == idUser;
 
-    String username = msg.id == idUser ? "You" : "${msg.username}${msg.id}";
+    String username = msg.key == idUser ? "You" : "${msg.name} ${msg.key}";
 
     Widget userTitle = Container(
       margin: EdgeInsets.only(top: 10, bottom: 5),
@@ -148,8 +157,8 @@ class _MessageListState extends State<MessageList> {
     for (int i = 0; i < 10; i++) {
       int id = Random().nextInt(10);
       messages.add(new Message(
-        id: id,
-        username: "user",
+        key: "$id",
+        name: "user",
         text: lorem,
         timestamp: 0
       ));
@@ -177,10 +186,10 @@ class _MessageListState extends State<MessageList> {
 }
 
 class Message {
-  final int id;
-  final String username;
+  final String key;
+  final String name;
   final String text;
   final int timestamp;
 
-  Message({this.id, this.username, this.timestamp, this.text});
+  Message({this.key, this.name, this.timestamp, this.text});
 }
