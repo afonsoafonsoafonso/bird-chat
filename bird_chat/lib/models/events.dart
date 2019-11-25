@@ -1,6 +1,7 @@
 import 'package:bird_chat/models/startTime.dart';
+import 'package:bird_chat/services/backend.dart';
 
-class Event {
+class Event implements Serializable{
 
   int id;
   String creator;
@@ -33,10 +34,14 @@ class Event {
     return tagsList;
   }
 
-
-  save(){
+  @override
+  Map<String, dynamic> toJson() {
     
+    return null;
   }
+
+
+
 
 }
 

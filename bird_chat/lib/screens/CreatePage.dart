@@ -1,7 +1,11 @@
+import 'dart:ffi';
+
 import 'package:bird_chat/models/events.dart';
+import 'package:bird_chat/services/backend.dart';
 import 'package:bird_chat/util/stringValidator.dart';
 import 'package:bird_chat/widgets/TextFormControlled.dart';
 import 'package:flutter/material.dart';
+import 'package:bird_chat/temp.dart';
 
 class CreatePage extends StatefulWidget {
   static const String route = '/create';
@@ -13,7 +17,7 @@ class CreatePage extends StatefulWidget {
 class _CreatePageState extends State<CreatePage> {
   final _formKey = GlobalKey<FormState>();
 
-  var _event = Event();
+  var _event = Event(id: 0, creator: userKey);
 
   @override
   Widget build(BuildContext context) {
@@ -39,42 +43,69 @@ class _CreatePageState extends State<CreatePage> {
                   child: Column(
                     children: [
                       new TextFormControlled(
+                          /*
                         inputFormater: ValidatorInputFormatter(
-                            editingValidator: SimpleTextRegex()),
-                        labelText: 'Enter Group Name',
-                        hintText: 'Ex: AI and beers',
-                        icon: Icons.group, //WIP
-                      ),
+                            editingValidator: SimpleTextRegex()),*/
+                          labelText: 'Enter Group Name',
+                          hintText: 'Ex: AI and beers',
+                          icon: Icons.group,
+                          onSaved: (value) {
+                            _event.title = value;
+                          },
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Can not be left blank';
+                            }
+                          }),
                       new TextFormControlled(
-                        // nameController: locationController,
-                        labelText: 'Enter Location',
-                        icon: Icons.location_on,
-                      ),
+                          // nameController: locationController,
+                          labelText: 'Enter Location',
+                          icon: Icons.location_on,
+                          onSaved: (value) {
+                            _event.location = value;
+                          },
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Can not be left blank';
+                            }
+                          }),
                       new TextFormControlled(
-                        // nameController: nameController,
-                        labelText: 'Enter Starting Hour',
-                        icon: Icons.access_alarm,
-                        textInputType: TextInputType.datetime,
-                        onSaved: (Value){
-                          print("Deal with time onSave\n");
-                        },
-                      ),
+                          // nameController: nameController,
+                          labelText: 'Enter Starting Hour',
+                          icon: Icons.access_alarm,
+                          textInputType: TextInputType.datetime,
+                          onSaved: (value) {
+                            print("Deal with time onSave\n");
+                          },
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Can not be left blank';
+                            }
+                          }),
                       new TextFormControlled(
-                        // nameController: nameController,
-                        labelText: 'Enter Description',
-                        icon: Icons.description,
-                        onSaved: (Value){
-                          _event.description=Value;
-                        },
-                      ),
+                          // nameController: nameController,
+                          labelText: 'Enter Description',
+                          icon: Icons.description,
+                          onSaved: (value) {
+                            _event.description = value;
+                          },
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Can not be left blank';
+                            }
+                          }),
                       new TextFormControlled(
-                        //nameController: nameController,
-                        labelText: 'Figuring out How will tags be in here',
-                        icon: Icons.error,
-                        onSaved: (Value){
-                          print("firgure tags: " + Value+"nl");
-                        }
-                      ),
+                          //nameController: nameController,
+                          labelText: 'Figuring out How will tags be in here',
+                          icon: Icons.error,
+                          onSaved: (value) {
+                            print("firgure tags: " + value + "nl");
+                          },
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Can not be left blank';
+                            }
+                          }),
                     ],
                   ),
                 ))),
@@ -84,7 +115,10 @@ class _CreatePageState extends State<CreatePage> {
           final form = _formKey.currentState;
           if (form.validate()) {
             form.save();
+            var controller = new HTMLHandler();
+            controller.send(_event);
             Navigator.pop(context);
+            
           }
         },
         tooltip: 'Creat Group',

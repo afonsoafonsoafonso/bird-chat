@@ -27,14 +27,14 @@ class HTMLHandler{
   HTMLHandler._internal();
   
   
-  send(Serializable a){
+  send(Serializable a) async{
     var json = jsonEncode(a.toJson());
     print("sending json\n");
     print(json);
   }
 
-  Serializable get(){
-    //TODO
+  Serializable get() {
+    
   }
 
 }

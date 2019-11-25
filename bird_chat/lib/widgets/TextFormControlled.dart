@@ -10,6 +10,7 @@ class TextFormControlled extends StatelessWidget {
     this.icon,
     this.textInputType,
     this.onSaved,
+    this.validator
   }) : super(key: key);
 
   final TextInputFormatter inputFormater;
@@ -18,23 +19,20 @@ class TextFormControlled extends StatelessWidget {
   final icon;
   final TextInputType textInputType;
   FormFieldSetter<String> onSaved;
+  FormFieldValidator<String> validator;
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.only(bottom: 8.0),
         child: TextFormField(
-          inputFormatters: [inputFormater],
+          //inputFormatters: [inputFormater],
           decoration: InputDecoration(
             labelText: labelText,
             hintText: hintText,
             icon: Icon(icon),
           ),
           keyboardType: textInputType,
-          validator: (value) {
-            if (value.isEmpty) {
-              return 'Can not be left blank';
-            }
-          },
+          validator: validator,
           onSaved: onSaved,
         ));
   }
