@@ -1,8 +1,5 @@
-import 'dart:ffi';
-
 import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/services/backend.dart';
-import 'package:bird_chat/util/stringValidator.dart';
 import 'package:bird_chat/widgets/TextFormControlled.dart';
 import 'package:flutter/material.dart';
 import 'package:bird_chat/temp.dart';
@@ -56,6 +53,7 @@ class _CreatePageState extends State<CreatePage> {
                             if (value.isEmpty) {
                               return 'Can not be left blank';
                             }
+                            return null;
                           }),
                       new TextFormControlled(
                           // nameController: locationController,
@@ -68,6 +66,7 @@ class _CreatePageState extends State<CreatePage> {
                             if (value.isEmpty) {
                               return 'Can not be left blank';
                             }
+                            return null;
                           }),
                       new TextFormControlled(
                           // nameController: nameController,
@@ -81,6 +80,7 @@ class _CreatePageState extends State<CreatePage> {
                             if (value.isEmpty) {
                               return 'Can not be left blank';
                             }
+                            return null;
                           }),
                       new TextFormControlled(
                           // nameController: nameController,
@@ -93,6 +93,7 @@ class _CreatePageState extends State<CreatePage> {
                             if (value.isEmpty) {
                               return 'Can not be left blank';
                             }
+                            return null;
                           }),
                       new TextFormControlled(
                           //nameController: nameController,
@@ -105,6 +106,7 @@ class _CreatePageState extends State<CreatePage> {
                             if (value.isEmpty) {
                               return 'Can not be left blank';
                             }
+                            return null;
                           }),
                     ],
                   ),

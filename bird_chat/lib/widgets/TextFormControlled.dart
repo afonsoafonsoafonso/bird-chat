@@ -18,8 +18,8 @@ class TextFormControlled extends StatelessWidget {
   final String hintText;
   final icon;
   final TextInputType textInputType;
-  FormFieldSetter<String> onSaved;
-  FormFieldValidator<String> validator;
+  final FormFieldSetter<String> onSaved;
+  final FormFieldValidator<String> validator;
   @override
   Widget build(BuildContext context) {
     return Padding(
