@@ -1,0 +1,116 @@
+{
+  "Groups": [
+    {
+      "id": 0,
+      "creator":"radaval3000",
+      "title": "Titulo da conversa so que grande o suficiente ahahahah",
+      "location": "Local da conversa igualmente grande",
+      "startTime": {
+        "time": {
+          "hours": 15,
+          "minutes": 30
+        },
+        "date": {
+          "day": 29,
+          "month": 10,
+          "year": 2019
+        }
+      },
+      "description": "General description of what a group is. Long enough to see it flex.",
+      "tags": [
+        "TagA",
+        "TagB"
+      ]
+    },
+    {
+      "id": 1,
+      "creator":"toferreira",
+      "title": "Conversation by the river",
+      "location": "The river duh",
+      "startTime": {
+        "time": {
+          "hours": 15,
+          "minutes": 30
+        },
+        "date": {
+          "day": 30,
+          "month": 10,
+          "year": 2019
+        }
+      },
+      "description": "Description",
+      "tags": [
+        "TagC",
+        "TagD"
+      ]
+    }
+  ],
+  "People": [
+    {
+      "Name": "Javarzio Radaval",
+      "Affiliation": "FEUP",
+      "Key":"radaval3000",
+      "Bio": "Tive 20 a tudo."
+    },
+    {
+      "Name": "Emanuel Coiso",
+      "Affiliation": "FEUP",
+      "Key":"coiso"
+    },
+    {
+      "Name": "Javarzia Maria",
+      "Affiliation": "FEUP",
+      "Key":"jmaria"
+    },
+    {
+      "Name": "Manuel António Ferreira",
+      "Affiliation": "FEUP",
+      "key":"toferreira",
+      "Bio": "Primo de 14ª grau do lendário Tó Ferreira."
+    }
+  ],
+  "Messages": [
+    {
+      "groupID":0,
+      "user": "radaval3000",
+      "timestamp": 0,
+      "text": "ola pessoas"
+    },
+    {
+      "groupID":0,
+      "user": "radaval3000",
+      "timestamp": 1,
+      "text": "prontos?"
+    },
+    {
+      "groupID":0,
+      "user": "coiso",
+      "timestamp": 2,
+      "text": "bora!!!"
+    },
+    {
+      "groupID":0,
+      "user": "jmaria",
+      "timestamp": 3,
+      "text": "oi :)"
+    },
+    {
+      "groupID":1,
+      "user": "toferreira",
+      "timestamp": 0,
+      "text": "ola"
+    },
+    {
+      "groupID":1,
+      "user": "toferreira",
+      "timestamp": 3,
+      "text": "nao se esquecam de aparecer"
+    },
+    {
+      "groupID":1,
+      "user": "radaval3000",
+      "timestamp": 6,
+      "text": "la estarei"
+    }
+  ]
+}
