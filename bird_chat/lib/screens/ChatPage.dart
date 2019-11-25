@@ -1,17 +1,25 @@
 import 'dart:math';
 
+import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/screens/GroupInfoPage.dart';
+import 'package:bird_chat/services/MessagesController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:bird_chat/models/Message.dart';
 
 class ChatPage extends StatelessWidget {
   static const String route = "/chat";
+
+  final Event event;
+  final MessagesController controller;
+
+  ChatPage({this.event, this.controller});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("chat_name"),
+        title: Text(event.title),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.menu),
@@ -23,8 +31,8 @@ class ChatPage extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          MessageList(),
-          ChatForm(),
+          MessageList(controller),
+          ChatForm(controller),
         ],
       ),
     );
@@ -32,12 +40,24 @@ class ChatPage extends StatelessWidget {
 }
 
 class ChatForm extends StatefulWidget {
+
+  MessagesController controller;
+  ChatForm(MessagesController controller) {
+    this.controller = controller;
+  }
+
   @override
-  _ChatFormState createState() => _ChatFormState();
+  _ChatFormState createState() => _ChatFormState(controller);
 }
 
 class _ChatFormState extends State<ChatForm> {
   final textController = new TextEditingController();
+
+  MessagesController controller;
+
+  _ChatFormState(MessagesController controller) {
+    this.controller = controller;
+  }
 
   @override
   void dispose() {
@@ -79,15 +99,30 @@ class _ChatFormState extends State<ChatForm> {
   }
 
   void _submit() {
-    print(textController.text);
+    String text = textController.text;
     textController.clear();
+
+    controller.addMessage(Message(
+      key: "user",
+      name: "user",
+      text: text,
+      timestamp: new DateTime.now().millisecondsSinceEpoch,
+    ));
+
     return;
   }
 }
 
 class MessageList extends StatefulWidget {
+
+  MessagesController controller;
+
+  MessageList(MessagesController controller) {
+    this.controller = controller;
+  }
+
   @override
-  _MessageListState createState() => _MessageListState();
+  _MessageListState createState() => _MessageListState(controller);
 }
 
 class _MessageListState extends State<MessageList> {
@@ -96,15 +131,23 @@ class _MessageListState extends State<MessageList> {
   final lorem =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
-  final messages = <Message>[];
+  List<Message> messages = <Message>[];
   String idUser = "0";
+
+  MessagesController controller;
+
+  _MessageListState(MessagesController controller) {
+    this.controller = controller;
+  }
 
   @override
   void initState() {
     super.initState();
-    _populateMessages();
+    controller.updateFunction = (msgs) {
+      messages = msgs;
+    };
+    controller.getMessages();
   }
-
 
   Widget _buildMessageCard(int i, Message msg) {
 
@@ -183,13 +226,4 @@ class _MessageListState extends State<MessageList> {
       ),
     );
   }
-}
-
-class Message {
-  final String key;
-  final String name;
-  final String text;
-  final int timestamp;
-
-  Message({this.key, this.name, this.timestamp, this.text});
 }

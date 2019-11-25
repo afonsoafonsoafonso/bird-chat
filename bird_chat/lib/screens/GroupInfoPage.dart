@@ -1,11 +1,16 @@
-import 'dart:io';
-import 'dart:math';
-
+import 'package:bird_chat/models/date.dart';
+import 'package:bird_chat/models/events.dart';
+import 'package:bird_chat/models/startTime.dart';
+import 'package:bird_chat/models/time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class GroupInfoPage extends StatelessWidget {
   static const String route = "/groupinfo";
+
+  final Event event;
+
+  GroupInfoPage({this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +22,21 @@ class GroupInfoPage extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: ListView(
           children: <Widget>[
-            Text("Group Name/Title",
+            //Title
+            Text(event.title,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold
               ),
             ),
-            Text("location",
+            //Title location
+            Text(event.location,
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.black54,
               ),
             ),
-            Text("time",
+            Text(eventDateSring(event.startTime),
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.black54,
@@ -38,7 +45,7 @@ class GroupInfoPage extends StatelessWidget {
             Divider(
               thickness: 1,
             ),
-            Text("Description"),
+            Text(event.description),
             Divider(
               thickness: 1,
             ),
@@ -47,6 +54,13 @@ class GroupInfoPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String eventDateSring(StartTime startTime) {
+    Date date = startTime.date;
+    Time time = startTime.time;
+
+    return "${date.day}/${date.month}/${date.year} ${time.hours}:${time.minutes}";
   }
 
 }
