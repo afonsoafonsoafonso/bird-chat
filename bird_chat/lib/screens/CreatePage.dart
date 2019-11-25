@@ -108,6 +108,9 @@ class _CreatePageState extends State<CreatePage> {
                             }
                             return null;
                           }),
+                      new Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                      )
                     ],
                   ),
                 ))),
