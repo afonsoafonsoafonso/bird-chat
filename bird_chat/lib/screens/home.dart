@@ -6,7 +6,6 @@ import 'package:bird_chat/widgets/myEvents_body.dart';
 import 'package:bird_chat/widgets/event_notification.dart';
 import 'CreatePage.dart';
 
-
 class Home extends StatefulWidget {
   static const String route = '/';
 
@@ -25,11 +24,8 @@ class _Home extends State<Home> {
     backgroundColor: Colors.blueAccent,
     centerTitle: true,
     elevation: 1.0,
-    title: SizedBox(
-      height: 35.0
-    ),
+    title: SizedBox(height: 35.0),
   );
-
 
   @override
   Widget build(BuildContext context) {
@@ -88,41 +84,47 @@ class _Home extends State<Home> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () {
-            Navigator.pushNamed(context, CreatePage.route);
-          },
-          tooltip: 'Create New Group',
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.pushNamed(context, CreatePage.route);
+        },
+        tooltip: 'Create New Group',
       ),
-          drawer: Drawer(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                DrawerHeader(
-                  child: Text('Header'),
-                  decoration: BoxDecoration(color: Colors.blue),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text("Afonso Afonso Afonso"),
+              accountEmail: Text("AfonsoAfonsoAfonso@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor:
+                    Theme.of(context).platform == TargetPlatform.iOS
+                        ? Colors.blue
+                        : Colors.white,
+                child: Text(
+                  "A",
+                  style: TextStyle(fontSize: 40.0),
                 ),
-                ListTile(
-                  title: Text('My Profile'),
-                  onTap:(){
-                    Navigator.pop(context);
-                    //filler until we have profile app
-                    Navigator.pushNamed(context, ProfilePage.route);
-
-                  }
-                ),
-                ListTile(
-                  title: Text('Example Chat'),
-                  onTap:(){
-                    Navigator.pop(context);
-                    //filler until we have profile app
-                    Navigator.pushNamed(context, ChatPage.route);
-
-                  }
-                )
-              ],
+              ),
             ),
-          ),
+            ListTile(
+                title: Text('My Profile'),
+                onTap: () {
+                  Navigator.pop(context);
+                  //filler until we have profile app
+                  Navigator.pushNamed(context, ProfilePage.route);
+                }),
+            ListTile(
+                title: Text('Example Chat'),
+                onTap: () {
+                  Navigator.pop(context);
+                  //filler until we have profile app
+                  Navigator.pushNamed(context, ChatPage.route);
+                })
+          ],
+        ),
+      ),
     );
   }
 }
