@@ -29,28 +29,10 @@ class Event {
     return tagsList;
   }
 
+
+  save(){
+    
+  }
+
 }
 
-
-// [
-//     {
-//         "title": "Titulo da conversa so que grande o suficiente ahahahah",
-//         "location": "Local da conversa igualmente grande",
-//         "startTime": {
-//             "time": {
-//                 "hours": 15,
-//                 "minutes": 30
-//             },
-//             "date" : {
-//                 "day": 29,
-//                 "month": 10,
-//                 "year": 2019
-//             }
-//         },
-//         "description": "General description of what a group is. Long enough to see it flex.",
-//         "tags": [
-//             "TagA",
-//             "TagB"
-//         ]
-//     }
-// ]

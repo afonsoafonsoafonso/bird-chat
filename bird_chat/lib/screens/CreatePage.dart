@@ -1,3 +1,4 @@
+import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/util/stringValidator.dart';
 import 'package:bird_chat/widgets/TextFormControlled.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,8 @@ class CreatePage extends StatefulWidget {
 
 class _CreatePageState extends State<CreatePage> {
   final _formKey = GlobalKey<FormState>();
+
+  var _event = Event();
 
   @override
   Widget build(BuildContext context) {
@@ -52,16 +55,25 @@ class _CreatePageState extends State<CreatePage> {
                         labelText: 'Enter Starting Hour',
                         icon: Icons.access_alarm,
                         textInputType: TextInputType.datetime,
+                        onSaved: (Value){
+                          print("Deal with time onSave\n");
+                        },
                       ),
                       new TextFormControlled(
                         // nameController: nameController,
                         labelText: 'Enter Description',
                         icon: Icons.description,
+                        onSaved: (Value){
+                          _event.description=Value;
+                        },
                       ),
                       new TextFormControlled(
                         //nameController: nameController,
                         labelText: 'Figuring out How will tags be in here',
                         icon: Icons.error,
+                        onSaved: (Value){
+                          print("firgure tags: " + Value+"nl");
+                        }
                       ),
                     ],
                   ),
@@ -70,12 +82,10 @@ class _CreatePageState extends State<CreatePage> {
       floatingActionButton: new FloatingActionButton(
         onPressed: () {
           final form = _formKey.currentState;
-          if(form.validate()){
+          if (form.validate()) {
             form.save();
-              
+            Navigator.pop(context);
           }
-
-          Navigator.pop(context);
         },
         tooltip: 'Creat Group',
         child: new Icon(Icons.check),
