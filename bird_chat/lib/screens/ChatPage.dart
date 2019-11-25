@@ -103,8 +103,8 @@ class _ChatFormState extends State<ChatForm> {
     textController.clear();
 
     controller.addMessage(Message(
-      key: "user",
-      name: "user",
+      key: "0",
+      name: "0",
       text: text,
       timestamp: new DateTime.now().millisecondsSinceEpoch,
     ));
@@ -144,7 +144,10 @@ class _MessageListState extends State<MessageList> {
   void initState() {
     super.initState();
     controller.updateFunction = (msgs) {
-      messages = msgs;
+      setState(() {
+        print("updated");
+        messages = msgs;
+      });
     };
     controller.getMessages();
   }
@@ -216,10 +219,11 @@ class _MessageListState extends State<MessageList> {
         scrollDirection: Axis.vertical,
         reverse: true,
         padding: EdgeInsets.all(5),
+        itemCount: messages.length,
         itemBuilder: (context, i) {
-          if (i >= messages.length) {
-            _populateMessages();
-          }
+          //if (i >= messages.length) {
+          //  _populateMessages();
+          //}
 
           return _buildMessageCard(i, messages[i]);
         },

@@ -21,6 +21,6 @@ class Message extends Comparable<Message> {
     if (timestamp == other.timestamp) {
       return name.compareTo(other.name);
     }
-    return timestamp.compareTo(other.timestamp);
+    return -timestamp.compareTo(other.timestamp);
   }
 }
