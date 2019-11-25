@@ -1,6 +1,7 @@
 import 'package:bird_chat/models/startTime.dart';
+import 'package:bird_chat/services/backend.dart';
 
-class Event {
+class Event implements Serializable{
 
   int id;
   String creator;
@@ -33,28 +34,14 @@ class Event {
     return tagsList;
   }
 
+  @override
+  Map<String, dynamic> toJson() {
+    
+    return null;
+  }
+
+
+
+
 }
 
-
-// [
-//     {
-//         "title": "Titulo da conversa so que grande o suficiente ahahahah",
-//         "location": "Local da conversa igualmente grande",
-//         "startTime": {
-//             "time": {
-//                 "hours": 15,
-//                 "minutes": 30
-//             },
-//             "date" : {
-//                 "day": 29,
-//                 "month": 10,
-//                 "year": 2019
-//             }
-//         },
-//         "description": "General description of what a group is. Long enough to see it flex.",
-//         "tags": [
-//             "TagA",
-//             "TagB"
-//         ]
-//     }
-// ]
