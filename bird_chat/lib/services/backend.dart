@@ -28,7 +28,7 @@ class HTMLHandler{
   
   
   send(Serializable a) async{
-    var json = jsonEncode(a.toJson());
+    var json = jsonEncode(a);
     print("sending json\n");
     print(json);
   }

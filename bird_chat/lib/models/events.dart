@@ -10,6 +10,7 @@ class Event implements Serializable{
   StartTime startTime;
   String description;
   List<String> tags;
+  String startTimeString;
   
   Event({this.id, this.creator, this.title, this.location, this.startTime, this.description, this.tags});
 
@@ -35,10 +36,20 @@ class Event implements Serializable{
   }
 
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() =>
+    {
+      'id' : id,
+      'creator' : creator,
+      'title' : title, 
+      'location' : location,
+      'starttime': startTimeString,
+      'description' : description,
+      'tags' : tags,
+
+
+    };
     
-    return null;
-  }
+  
 
 
 
