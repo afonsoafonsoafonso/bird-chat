@@ -12,8 +12,6 @@ class CreatePage extends StatefulWidget {
 class _CreatePageState extends State<CreatePage> {
   final _formKey = GlobalKey<FormState>();
 
-  
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -26,38 +24,37 @@ class _CreatePageState extends State<CreatePage> {
         backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
-              child: Container(
+        child: Container(
             color: Colors.white,
             child: Padding(
                 padding: EdgeInsets.only(
                     left: width * 0.05,
                     right: width * 0.1,
-                    top: height *
-                        0.025),
+                    top: height * 0.025),
                 child: Form(
                   key: _formKey,
                   child: Column(
                     children: [
                       new TextFormControlled(
-                        inputFormater: ValidatorInputFormatter(editingValidator: SimpleTextRegex()),
+                        inputFormater: ValidatorInputFormatter(
+                            editingValidator: SimpleTextRegex()),
                         labelText: 'Enter Group Name',
                         hintText: 'Ex: AI and beers',
                         icon: Icons.group, //WIP
                       ),
                       new TextFormControlled(
-                       // nameController: locationController,
+                        // nameController: locationController,
                         labelText: 'Enter Location',
                         icon: Icons.location_on,
                       ),
                       new TextFormControlled(
-                       // nameController: nameController,
+                        // nameController: nameController,
                         labelText: 'Enter Starting Hour',
                         icon: Icons.access_alarm,
                         textInputType: TextInputType.datetime,
-
                       ),
                       new TextFormControlled(
-                       // nameController: nameController,
+                        // nameController: nameController,
                         labelText: 'Enter Description',
                         icon: Icons.description,
                       ),
@@ -72,6 +69,12 @@ class _CreatePageState extends State<CreatePage> {
       ),
       floatingActionButton: new FloatingActionButton(
         onPressed: () {
+          final form = _formKey.currentState;
+          if(form.validate()){
+            form.save();
+              
+          }
+
           Navigator.pop(context);
         },
         tooltip: 'Creat Group',
