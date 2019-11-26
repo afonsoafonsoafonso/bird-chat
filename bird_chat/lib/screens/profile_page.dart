@@ -10,15 +10,6 @@ class ProfilePage extends StatelessWidget {
 
   final String profileKey;
 
-  _launchURL() async {
-    String url = 'http://dardin88.github.io';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +25,8 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             FutureBuilder(
-              future: DefaultAssetBundle.of(context)
-                  .loadString('assets/mock.json'),
+              future:
+                  DefaultAssetBundle.of(context).loadString('assets/mock.json'),
               builder: (context, snapshot) {
                 var data = json.decode(snapshot.data.toString());
 
@@ -48,11 +39,14 @@ class ProfilePage extends StatelessWidget {
                     picURL = person['PictureURL'];
                     affiliation = person['Affiliation'];
                     bio = person['Bio'];
-                    //print(name);
-                    //print(personalURL);
-                    //print(picURL);
-                    //print(affiliation);
-                    //print(bio);
+                  }
+                }
+
+                _launchURL() async {
+                  if (await canLaunch(personalURL)) {
+                    await launch(personalURL);
+                  } else {
+                    throw 'Could not launch $personalURL';
                   }
                 }
 
