@@ -67,6 +67,14 @@
       "Affiliation": "FEUP",
       "key":"toferreira",
       "Bio": "Primo de 14ª grau do lendário Tó Ferreira."
+    },
+    {
+      "Name": "Dario Di Nucci",
+      "Affiliation": "Vrije Universiteit Brussel",
+      "PictureURL": "https://2019.programming-conference.org/getProfileImage/dariodinucci/6e954823-249a-484f-9dbf-e5462d7fa78e/small.jpg",
+      "Bio": "I am a research fellow at the Software Languages Lab of the Vrije Universiteit Brussel in Belgium. I received the PhD in Management and Information Technology from the University of Salerno in 2018 advised by Prof. Andrea De Lucia with a thesis entitled Methods and Tools for Focusing and Prioritizing the Testing Effort.",
+      "URL": "http://dardin88.github.io",
+      "Key": "dariodinucci"
     }
   ],
   "Messages": [

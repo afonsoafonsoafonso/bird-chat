@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:bird_chat/screens/CreatePage.dart';
 import 'package:bird_chat/screens/UndefinedView.dart';
 
-Route<dynamic> generateRoute(RouteSettings settings){
-  switch(settings.name){
+Route<dynamic> generateRoute(RouteSettings settings) {
+  switch (settings.name) {
     case Home.route:
       return MaterialPageRoute(builder: (context) => Home());
     case CreatePage.route:
@@ -25,17 +25,16 @@ Route<dynamic> generateRoute(RouteSettings settings){
         description: "A thing where we talk and stuff",
         location: "place",
         startTime: StartTime(
-          date: Date(day: 1, month: 1, year: 1970),
-          time: Time(hours: 0, minutes: 0)
-        ),
+            date: Date(day: 1, month: 1, year: 1970),
+            time: Time(hours: 0, minutes: 0)),
         tags: <String>["TagA, TagB"],
       );
-      return MaterialPageRoute(builder: (context) => ChatPage(
-        event: optional, 
-        controller: MessagesController(event: optional),
-      ));
-    case ProfilePage.route:
-      return MaterialPageRoute(builder: (context) => ProfilePage());
+      return MaterialPageRoute(
+          builder: (context) => ChatPage(
+                event: optional,
+                controller: MessagesController(event: optional),
+              ));
+
     case GroupInfoPage.route:
       Event optional = new Event(
         id: 0,
@@ -44,16 +43,15 @@ Route<dynamic> generateRoute(RouteSettings settings){
         description: "A thing where we talk and stuff",
         location: "place",
         startTime: StartTime(
-          date: Date(day: 1, month: 1, year: 1970),
-          time: Time(hours: 0, minutes: 0)
-        ),
+            date: Date(day: 1, month: 1, year: 1970),
+            time: Time(hours: 0, minutes: 0)),
         tags: <String>["TagA, TagB"],
       );
 
-      return MaterialPageRoute(builder: (context) => GroupInfoPage(event: optional));
+      return MaterialPageRoute(
+          builder: (context) => GroupInfoPage(event: optional));
     default:
-      return MaterialPageRoute(builder: (context) => UndefinedView(name: settings.name));
-  
+      return MaterialPageRoute(
+          builder: (context) => UndefinedView(name: settings.name));
   }
-
-} 
+}
