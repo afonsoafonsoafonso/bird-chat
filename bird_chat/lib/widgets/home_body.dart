@@ -1,3 +1,4 @@
+import 'package:bird_chat/services/DatabaseMock.dart';
 import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/event_Container.dart';
 
@@ -9,7 +10,7 @@ class HomeBody extends StatelessWidget {
 
   final List<Event> events = [];
   Future<List<Event>> _events() async {
-    return HomePageService.getEvents();
+    return DatabaseMock.getEvents();
   }
 
   @override
