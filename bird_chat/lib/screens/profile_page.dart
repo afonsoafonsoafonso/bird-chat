@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
 
@@ -26,9 +27,10 @@ class ProfilePage extends StatelessWidget {
             ),
             FutureBuilder(
               future:
-                  DefaultAssetBundle.of(context).loadString('assets/mock.json'),
+                  rootBundle.loadString('assets/mock.json'),
               builder: (context, snapshot) {
-                var data = json.decode(snapshot.data.toString());
+                var data = jsonDecode(snapshot.data);
+
 
                 String name, personalURL, picURL, affiliation, bio;
 

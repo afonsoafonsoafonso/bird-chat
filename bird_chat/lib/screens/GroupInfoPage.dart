@@ -2,6 +2,7 @@ import 'package:bird_chat/models/date.dart';
 import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/models/startTime.dart';
 import 'package:bird_chat/models/time.dart';
+import 'package:bird_chat/screens/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -27,7 +28,9 @@ class GroupInfoPage extends StatelessWidget {
                   Text("Creator Profile"),
                 ],
               ),
-              onTap: (){},
+              onTap: (){
+                Navigator.pushNamed(context, ProfilePage.route, arguments: event.creator); 
+              },
             ),
           )
         ],

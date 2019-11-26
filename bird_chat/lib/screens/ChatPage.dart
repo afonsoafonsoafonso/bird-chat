@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/screens/GroupInfoPage.dart';
 import 'package:bird_chat/services/MessagesController.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:bird_chat/models/Message.dart';
@@ -24,7 +25,7 @@ class ChatPage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.menu),
             onPressed: () {
-              Navigator.pushNamed(context, GroupInfoPage.route);
+              Navigator.pushNamed(context, GroupInfoPage.route, arguments: event);
             },
           )
         ],
@@ -47,21 +48,16 @@ class ChatForm extends StatefulWidget {
   }
 
   @override
-  _ChatFormState createState() => _ChatFormState(controller);
+  _ChatFormState createState() => _ChatFormState();
 }
 
 class _ChatFormState extends State<ChatForm> {
   final textController = new TextEditingController();
 
-  MessagesController controller;
-
-  _ChatFormState(MessagesController controller) {
-    this.controller = controller;
-  }
-
   @override
   void dispose() {
     textController.dispose();
+    
     super.dispose();
   }
 
@@ -100,14 +96,14 @@ class _ChatFormState extends State<ChatForm> {
 
   void _submit() {
     String text = textController.text;
-    textController.clear();
 
-    controller.addMessage(Message(
+    widget.controller.addMessage(Message(
       key: "0",
       name: "0",
       text: text,
       timestamp: new DateTime.now().millisecondsSinceEpoch,
     ));
+    textController.clear();
 
     return;
   }
@@ -122,7 +118,7 @@ class MessageList extends StatefulWidget {
   }
 
   @override
-  _MessageListState createState() => _MessageListState(controller);
+  _MessageListState createState() => _MessageListState();
 }
 
 class _MessageListState extends State<MessageList> {
@@ -134,22 +130,19 @@ class _MessageListState extends State<MessageList> {
   List<Message> messages = <Message>[];
   String idUser = "0";
 
-  MessagesController controller;
-
-  _MessageListState(MessagesController controller) {
-    this.controller = controller;
-  }
-
   @override
   void initState() {
     super.initState();
-    controller.updateFunction = (msgs) {
+
+    print("${widget.controller.event.id}");
+    widget.controller.updateFunction = (msgs) {
       setState(() {
         print("updated");
         messages = msgs;
       });
     };
-    controller.getMessages();
+    print("${widget.controller.updateFunction}");
+    widget.controller.getMessages();
   }
 
   Widget _buildMessageCard(int i, Message msg) {

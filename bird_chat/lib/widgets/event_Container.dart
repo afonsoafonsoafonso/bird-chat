@@ -1,3 +1,4 @@
+import 'package:bird_chat/screens/ChatPage.dart';
 import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/event_DropDown_Container.dart';
 
@@ -31,31 +32,36 @@ class _EventContainer extends State<EventContainer> {
             children: <Widget> [
               Expanded (
                 flex: 7, 
-                child: Container (
-                  height: 50,
-                  padding: EdgeInsets.only(left: 7, top: 7, bottom: 7),
-                  child: Column (
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        child: Flexible (
-                          child: Text(
-                            widget.event.title,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                child: InkWell(
+                    onTap: (){
+                      Navigator.pushNamed(context, ChatPage.route, arguments: widget.event);
+                    },
+                                  child: Container (
+                    height: 50,
+                    padding: EdgeInsets.only(left: 7, top: 7, bottom: 7),
+                    child: Column (
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          child: Flexible (
+                            child: Text(
+                              widget.event.title,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ) 
-                      ),
-                      Container(
-                        child: Text(
-                          widget.event.location,
-                          overflow: TextOverflow.ellipsis
+                          ) 
                         ),
-                      ),
-                    ],
+                        Container(
+                          child: Text(
+                            widget.event.location,
+                            overflow: TextOverflow.ellipsis
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

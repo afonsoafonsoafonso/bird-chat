@@ -35,6 +35,10 @@ class DatabaseMock {
     return messages.map<Message>((json) => Message.fromJson(json)).toList();
   }
   
+  static List<Event> getEvents() {
+    return events;
+  }
+
   static List<Message> getMessages(int eventId) {
     List<Message> msgs = List<Message>();
     for (dynamic msg in messages) {

@@ -18,38 +18,21 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case CreatePage.route:
       return MaterialPageRoute(builder: (context) => CreatePage());
     case ChatPage.route:
-      Event optional = new Event(
-        id: 0,
-        creator: "user",
-        title: "Event Title",
-        description: "A thing where we talk and stuff",
-        location: "place",
-        startTime: StartTime(
-            date: Date(day: 1, month: 1, year: 1970),
-            time: Time(hours: 0, minutes: 0)),
-        tags: <String>["TagA, TagB"],
+      Event optional = settings.arguments;
+      print("routing");
+      ChatPage page = ChatPage(
+        event: optional,
+        controller: MessagesController(event: optional),
       );
-      return MaterialPageRoute(
-          builder: (context) => ChatPage(
-                event: optional,
-                controller: MessagesController(event: optional),
-              ));
-
+      return MaterialPageRoute(builder: (context) => page);
+    case ProfilePage.route:
+      ProfilePage page = ProfilePage(profileKey: settings.arguments);
+      return MaterialPageRoute(builder: (context) => page);
     case GroupInfoPage.route:
-      Event optional = new Event(
-        id: 0,
-        creator: "user",
-        title: "Event Title",
-        description: "A thing where we talk and stuff",
-        location: "place",
-        startTime: StartTime(
-            date: Date(day: 1, month: 1, year: 1970),
-            time: Time(hours: 0, minutes: 0)),
-        tags: <String>["TagA, TagB"],
-      );
-
+      Event optional = settings.arguments;
+      GroupInfoPage page = GroupInfoPage(event: optional);
       return MaterialPageRoute(
-          builder: (context) => GroupInfoPage(event: optional));
+          builder: (context) => page);
     default:
       return MaterialPageRoute(
           builder: (context) => UndefinedView(name: settings.name));
