@@ -34,10 +34,9 @@ class _Home extends State<Home> {
       body: pageBody,
       bottomNavigationBar: new Container(
         color: Colors.white,
-        height: 50.0,
+        height: MediaQuery.of(context).size.height * 0.07,
         child: new BottomAppBar(
           child: new Row(
-            // alignment: MainAxisAlignment.spaceAround,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               new IconButton(
