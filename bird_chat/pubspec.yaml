@@ -22,7 +22,7 @@ flutter:
 
   assets:
     - assets/mock.json
-    - imgs/loading.gif
+    - assets/loading.gif
   uses-material-design: true
 
   fonts:
