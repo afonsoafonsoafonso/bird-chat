@@ -17,6 +17,20 @@ class GroupInfoPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Group Info"),
+        actions: <Widget>[
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 5),
+            child: InkWell(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("Creator Profile"),
+                ],
+              ),
+              onTap: (){},
+            ),
+          )
+        ],
       ),
       body: Container(
         padding: EdgeInsets.all(10),
