@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/event_Container.dart';
 
 import 'package:bird_chat/models/events.dart';
-import 'package:bird_chat/services/eventsService.dart';
 
 
 class HomeBody extends StatelessWidget {
