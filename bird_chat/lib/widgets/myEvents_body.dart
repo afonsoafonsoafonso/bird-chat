@@ -9,7 +9,7 @@ class MyEventsBody extends StatelessWidget {
 
   final List<Event> events = [];
   Future<List<Event>> _events() async {
-    return EventsService.getEvents('myEvents');
+    return EventsService.getEvents();
   }
 
   @override

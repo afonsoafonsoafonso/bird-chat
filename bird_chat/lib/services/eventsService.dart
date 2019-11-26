@@ -1,49 +1,25 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:bird_chat/models/events.dart';
+import 'package:flutter/services.dart';
 
+import 'package:bird_chat/models/events.dart';
 
 class EventsService {
 
-  static String homeEvents = "https://api.myjson.com/bins/a6em2";
-  static String myEvents = "https://api.myjson.com/bins/18y4ca";
+  static Future<List<Event>> getEvents() async {
 
-  static Future<List<Event>> getEvents(String typeOfEvents) async {
+    List<Event> list;
 
-    try {
-      var response;
-      List<Event> list;
+    String jsonString = await rootBundle.loadString('assets/mock.json');
+    var jsonData = jsonDecode(jsonString);
 
-      if(typeOfEvents == 'homeEvents') {
-        response = await http.get(homeEvents);
-      }
-      else if(typeOfEvents == 'myEvents') {
-        response = await http.get(myEvents);
-      }
-      else {
-        return list;
-      }
+    list = parseEvents(jsonData["Groups"]);
 
-
-      if(response.statusCode == 200) {
-        list = parseEvents(response.body);
-
-        return list;
-      }
-
-      return list;
-
-    } catch (e) {
-      throw Exception(e.toString());
-    }
+    return list;
   }
 
+  static List<Event> parseEvents(List<dynamic> events) {
 
-  static List<Event> parseEvents(String responseBody) {
-
-    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-
-    return parsed.map<Event>((json) => Event.fromJson(json)).toList();
+    return events.map<Event>((json) => Event.fromJson(json)).toList();
   }
 }
 

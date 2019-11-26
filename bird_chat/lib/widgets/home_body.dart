@@ -9,7 +9,7 @@ class HomeBody extends StatelessWidget {
 
   final List<Event> events = [];
   Future<List<Event>> _events() async {
-    return EventsService.getEvents('homeEvents');
+    return EventsService.getEvents();
   }
 
   @override
