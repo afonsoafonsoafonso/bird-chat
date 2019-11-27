@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:bird_chat/models/Message.dart';
 import 'package:bird_chat/models/events.dart';
@@ -10,7 +9,7 @@ class DatabaseMock {
   static Map<String, dynamic> _jsonData;
 
   static List<Event> events;
-  static List<dynamic> messages;
+  static List<Message> messages;
 
   static bool inited = false;
 
@@ -20,7 +19,7 @@ class DatabaseMock {
 
     events = _parseEvents(_jsonData['Groups']);
 
-    messages = _jsonData['Messages'];
+    messages = _parseMessages(_jsonData['Messages']);
     print('database loaded');
     inited = true;
   }
@@ -40,13 +39,6 @@ class DatabaseMock {
   }
 
   static List<Message> getMessages(int eventId) {
-    List<Message> msgs = List<Message>();
-    for (dynamic msg in messages) {
-      if (msg['groupID'] as int == eventId) {
-        msgs.add(Message.fromJson(msg));
-      }
-    }
-
-    return msgs;
+    return messages.where((i) => i.groupID == eventId).toList();
   }
 }

@@ -1,7 +1,4 @@
-import 'package:bird_chat/models/date.dart';
 import 'package:bird_chat/models/events.dart';
-import 'package:bird_chat/models/startTime.dart';
-import 'package:bird_chat/models/time.dart';
 import 'package:bird_chat/screens/GroupInfoPage.dart';
 import 'package:bird_chat/screens/home.dart';
 import 'package:bird_chat/screens/ChatPage.dart';
@@ -11,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:bird_chat/screens/CreatePage.dart';
 import 'package:bird_chat/screens/UndefinedView.dart';
 
-Route<dynamic> generateRoute(RouteSettings settings){
-  switch(settings.name){
+Route<dynamic> generateRoute(RouteSettings settings) {
+  switch (settings.name) {
     case Home.route:
       return MaterialPageRoute(builder: (context) => Home());
     case CreatePage.route:
@@ -26,14 +23,15 @@ Route<dynamic> generateRoute(RouteSettings settings){
       );
       return MaterialPageRoute(builder: (context) => page);
     case ProfilePage.route:
-      return MaterialPageRoute(builder: (context) => ProfilePage());
+      ProfilePage page = ProfilePage(profileKey: settings.arguments);
+      return MaterialPageRoute(builder: (context) => page);
     case GroupInfoPage.route:
       Event optional = settings.arguments;
-
-      return MaterialPageRoute(builder: (context) => GroupInfoPage(event: optional));
+      GroupInfoPage page = GroupInfoPage(event: optional);
+      return MaterialPageRoute(
+          builder: (context) => page);
     default:
-      return MaterialPageRoute(builder: (context) => UndefinedView(name: settings.name));
-  
+      return MaterialPageRoute(
+          builder: (context) => UndefinedView(name: settings.name));
   }
-
-} 
+}

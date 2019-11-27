@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/event_Container.dart';
 
 import 'package:bird_chat/models/events.dart';
-import 'package:bird_chat/services/homePageService.dart';
 
 
 class HomeBody extends StatelessWidget {
@@ -48,7 +47,11 @@ class HomeBody extends StatelessWidget {
               return Expanded (
                 child: Container (
                   child: Center (
-                    child: Text("Loading"),
+                    child: Image.asset(
+                      "assets/loading.gif",
+                      height: MediaQuery.of(context).size.height * 1,
+                      width: MediaQuery.of(context).size.width * 1,
+                    ),
                   )
                 )
               );

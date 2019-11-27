@@ -7,13 +7,13 @@ class EventNotification extends StatelessWidget {
     return new Positioned(
       right: 0,
       child: new Container(
-        padding: EdgeInsets.all(2),
+        padding: EdgeInsets.all(3),
         decoration: new BoxDecoration(
           color: Colors.red,
           borderRadius: BorderRadius.circular(6),
         ),
         child: new Text(
-          '100',
+          '99',
           textAlign: TextAlign.center,
         ),
       ),

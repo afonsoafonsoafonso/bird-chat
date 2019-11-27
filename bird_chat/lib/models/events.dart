@@ -24,11 +24,11 @@ class Event implements Serializable{
         json['startTime']
       ),
       description: json['description'] as String,
-      tags: parseTags(json['tags']) 
+      tags: _parseTags(json['tags']) 
     );
   }
 
-  static List<String> parseTags(tagsJson) {
+  static List<String> _parseTags(tagsJson) {
 
     List<String> tagsList = new List<String>.from((tagsJson));
 
@@ -45,14 +45,6 @@ class Event implements Serializable{
       'starttime': startTimeString,
       'description' : description,
       'tags' : tags,
-
-
     };
-    
-  
-
-
-
-
 }
 
