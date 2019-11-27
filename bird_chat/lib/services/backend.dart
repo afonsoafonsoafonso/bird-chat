@@ -10,8 +10,7 @@ class NotOverwritten implements Exception {
 abstract class Serializable{
 
   Map<String, dynamic> toJson(){
-    throw new NotOverwritten("fromJason Method must be Overwritten");
-    
+    throw new NotOverwritten("fromJson Method must be Overwritten");
   }
 
 }
