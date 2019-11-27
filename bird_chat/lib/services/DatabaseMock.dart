@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:bird_chat/models/Message.dart';
 import 'package:bird_chat/models/events.dart';

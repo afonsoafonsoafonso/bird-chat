@@ -1,9 +1,6 @@
-import 'dart:math';
-
 import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/screens/GroupInfoPage.dart';
 import 'package:bird_chat/services/MessagesController.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:bird_chat/models/Message.dart';
@@ -32,8 +29,8 @@ class ChatPage extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          MessageList(controller),
-          ChatForm(controller),
+          MessageList(controller: controller),
+          ChatForm(controller: controller),
         ],
       ),
     );
@@ -42,10 +39,8 @@ class ChatPage extends StatelessWidget {
 
 class ChatForm extends StatefulWidget {
 
-  MessagesController controller;
-  ChatForm(MessagesController controller) {
-    this.controller = controller;
-  }
+  final MessagesController controller;
+  ChatForm({this.controller});
 
   @override
   _ChatFormState createState() => _ChatFormState();
@@ -111,11 +106,8 @@ class _ChatFormState extends State<ChatForm> {
 
 class MessageList extends StatefulWidget {
 
-  MessagesController controller;
-
-  MessageList(MessagesController controller) {
-    this.controller = controller;
-  }
+  final MessagesController controller;
+  MessageList({this.controller});
 
   @override
   _MessageListState createState() => _MessageListState();
@@ -190,18 +182,6 @@ class _MessageListState extends State<MessageList> {
         ],
       ),
     );
-  }
-
-  void _populateMessages() {
-    for (int i = 0; i < 10; i++) {
-      int id = Random().nextInt(10);
-      messages.add(new Message(
-        key: "$id",
-        name: "user",
-        text: lorem,
-        timestamp: 0
-      ));
-    }
   }
 
   @override

@@ -33,8 +33,4 @@ class HTMLHandler{
     print(json);
   }
 
-  Serializable get() {
-    
-  }
-
 }
