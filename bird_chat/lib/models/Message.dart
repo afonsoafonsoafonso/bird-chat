@@ -1,7 +1,7 @@
 
 class Message extends Comparable<Message> {
   final String key;
-  final int groupID;
+  int groupID;
   final String name;
   final String text;
   final int timestamp;

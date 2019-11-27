@@ -38,6 +38,11 @@ class DatabaseMock {
     return events;
   }
 
+  static void addMessage(Message msg) {
+    print(msg.text);
+    messages.add(msg);
+  }
+
   static List<Message> getMessages(int eventId) {
     return messages.where((i) => i.groupID == eventId).toList();
   }

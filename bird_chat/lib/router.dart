@@ -16,7 +16,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => CreatePage());
     case ChatPage.route:
       Event optional = settings.arguments;
-      print("routing");
       ChatPage page = ChatPage(
         event: optional,
         controller: MessagesController(event: optional),

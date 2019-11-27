@@ -20,8 +20,10 @@ class MessagesController {
   }
 
   void addMessage(Message msg) {
-    print(msg.text);
+    msg.groupID = event.id;
     messages.add(msg);
+
+    DatabaseMock.addMessage(msg);
 
     updateFunction(messages.toList());
   }

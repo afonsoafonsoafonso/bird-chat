@@ -20,6 +20,11 @@
       "tags": [
         "TagA",
         "TagB"
+      ],
+      "atendees":[
+        "radaval3000",
+        "jmaria",
+        "coiso"
       ]
     },
     {
@@ -42,6 +47,10 @@
       "tags": [
         "TagC",
         "TagD"
+      ],
+      "atendees":[
+        "toferreira",
+        "radaval3000"
       ]
     }
   ],

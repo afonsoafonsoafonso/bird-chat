@@ -127,14 +127,11 @@ class _MessageListState extends State<MessageList> {
   void initState() {
     super.initState();
 
-    print("${widget.controller.event.id}");
     widget.controller.updateFunction = (msgs) {
       setState(() {
-        print("updated");
         messages = msgs;
       });
     };
-    print("${widget.controller.updateFunction}");
     widget.controller.getMessages();
   }
 
@@ -195,10 +192,6 @@ class _MessageListState extends State<MessageList> {
         padding: EdgeInsets.all(5),
         itemCount: messages.length,
         itemBuilder: (context, i) {
-          //if (i >= messages.length) {
-          //  _populateMessages();
-          //}
-
           return _buildMessageCard(i, messages[i]);
         },
       ),
