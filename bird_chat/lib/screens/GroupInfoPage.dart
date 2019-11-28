@@ -1,10 +1,12 @@
 import 'dart:convert';
 
+import 'package:bird_chat/models/User.dart';
 import 'package:bird_chat/models/date.dart';
 import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/models/startTime.dart';
 import 'package:bird_chat/models/time.dart';
 import 'package:bird_chat/screens/profile_page.dart';
+import 'package:bird_chat/services/DatabaseMock.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -102,22 +104,25 @@ class PeopleList extends StatefulWidget {
 class _PeopleListState extends State<PeopleList> {
   bool peopleVisible = false;
 
-  Future<List<Widget>> _getEventUsers(Event event) async {
-    String jsonString = await rootBundle.loadString('assets/mock.json');
+  List<String> attendees;
+  Future<List<Widget>> widgets;
 
-    Map<String, dynamic> json = jsonDecode(jsonString);
+  @override
+  void initState() {
+    super.initState();
 
-    List<dynamic> attendees;
+    attendees = widget.event.attendees;
 
-    for (dynamic evt in json['Groups']) {
-      if (event.id == evt['id'] as int) {
-        attendees = evt['attendees'];
-      }
-    }
+    widgets = _getEventUsers();
+  }
 
+  Future<List<Widget>> _getEventUsers() async {
     List<Widget> widgets = <Widget>[];
 
     for (String key in attendees) {
+
+      User user = DatabaseMock.getUser(key);
+
       widgets.add(
         InkWell(
           onTap: () {
@@ -132,7 +137,7 @@ class _PeopleListState extends State<PeopleList> {
                 Expanded(
                   child: Container(
                     margin: EdgeInsets.only(left: 5),
-                    child: Text(key),
+                    child: Text(user.name),
                   ),
                 )
               ],
@@ -154,10 +159,11 @@ class _PeopleListState extends State<PeopleList> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Expanded(
-                  child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: Text("num people"),
-              )),
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Text("${attendees.length} people."),
+                )
+              ),
               peopleVisible
                   ? Icon(Icons.arrow_downward)
                   : Icon(Icons.arrow_forward)
@@ -172,7 +178,7 @@ class _PeopleListState extends State<PeopleList> {
         Visibility(
           visible: peopleVisible,
           child: FutureBuilder(
-            future: _getEventUsers(widget.event),
+            future: widgets,
             builder: (context, snapshot) {
               if (snapshot.data != null) {
                 return Column(

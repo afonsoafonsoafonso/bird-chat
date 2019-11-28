@@ -1,7 +1,8 @@
+import 'package:bird_chat/models/User.dart';
 import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/screens/GroupInfoPage.dart';
+import 'package:bird_chat/services/DatabaseMock.dart';
 import 'package:bird_chat/services/MessagesController.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:bird_chat/models/Message.dart';
@@ -95,7 +96,6 @@ class _ChatFormState extends State<ChatForm> {
 
     widget.controller.addMessage(Message(
       key: "0",
-      name: "0",
       text: text,
       timestamp: new DateTime.now().millisecondsSinceEpoch,
     ));
@@ -116,9 +116,6 @@ class MessageList extends StatefulWidget {
 
 class _MessageListState extends State<MessageList> {
   final scrollController = new ScrollController();
-  
-  final lorem =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
   List<Message> messages = <Message>[];
   String idUser = "0";
@@ -139,7 +136,9 @@ class _MessageListState extends State<MessageList> {
 
     bool ownMessage = msg.key == idUser;
 
-    String username = msg.key == idUser ? "You" : "${msg.name} ${msg.key}";
+    User user = DatabaseMock.getUser(msg.key);
+
+    String username = msg.key == idUser ? "You" : "${user.name}";
 
     Widget userTitle = Container(
       margin: EdgeInsets.only(top: 10, bottom: 5),
