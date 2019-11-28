@@ -22,7 +22,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
       return MaterialPageRoute(builder: (context) => page);
     case ProfilePage.route:
-      ProfilePage page = ProfilePage(profileKey: settings.arguments);
+      String name = settings.arguments;
+      ProfilePage page = ProfilePage(profileKey: name);
       return MaterialPageRoute(builder: (context) => page);
     case GroupInfoPage.route:
       Event optional = settings.arguments;

@@ -26,11 +26,13 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             FutureBuilder(
-              future:
-                  rootBundle.loadString('assets/mock.json'),
+              future: rootBundle.loadString('assets/mock.json'),
               builder: (context, snapshot) {
+                if (snapshot.data == null) {
+                  return CircularProgressIndicator();
+                }
+                
                 var data = jsonDecode(snapshot.data);
-
 
                 String name, personalURL, picURL, affiliation, bio;
 
