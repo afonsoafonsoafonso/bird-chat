@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:bird_chat/models/User.dart';
 import 'package:bird_chat/models/date.dart';
 import 'package:bird_chat/models/events.dart';
@@ -8,7 +6,6 @@ import 'package:bird_chat/models/time.dart';
 import 'package:bird_chat/screens/profile_page.dart';
 import 'package:bird_chat/services/DatabaseMock.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 class GroupInfoPage extends StatelessWidget {
