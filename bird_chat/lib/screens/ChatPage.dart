@@ -81,7 +81,7 @@ class _ChatPageBodyState extends State<ChatPageBody> {
                     clipBehavior: Clip.antiAlias,
                     child: Text("Join"),
                     color: Colors.blue,
-                    onPressed: (){print("clicked");},
+                    onPressed: (){_attendEvent();},
                   ),
                 )
               ],
@@ -92,6 +92,14 @@ class _ChatPageBodyState extends State<ChatPageBody> {
         ChatForm(controller: widget.controller),
       ],
     );
+  }
+
+  void _attendEvent() {
+    DatabaseMock.attendEvent(widget.event, User(key: "0", affiliation: '', bio: '', name: 'Menino', picUrl: '', url: ''));
+
+    setState(() {
+      inGroup = widget.event.attendees.contains("0");
+    });
   }
 }
 

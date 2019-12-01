@@ -63,7 +63,11 @@ class DatabaseMock {
     return messages.where((i) => i.groupID == eventId).toList();
   }
 
-  static getUser(String key) {
+  static User getUser(String key) {
     return usersMap[key];
+  }
+
+  static void attendEvent(Event event, User user) {
+    event.attendees.add(user.key);
   }
 }
