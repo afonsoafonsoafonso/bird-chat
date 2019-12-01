@@ -14,7 +14,6 @@ class ChatPage extends StatelessWidget {
   final MessagesController controller;
 
   ChatPage({this.event, this.controller});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,12 +28,69 @@ class ChatPage extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          MessageList(controller: controller),
-          ChatForm(controller: controller),
-        ],
-      ),
+      body: new ChatPageBody(controller: controller, event: event,),
+    );
+  }
+}
+
+class ChatPageBody extends StatefulWidget {
+  const ChatPageBody({
+    Key key,
+    @required this.controller,
+    @required this.event
+  }) : super(key: key);
+
+  final MessagesController controller;
+  final Event event;
+
+  @override
+  _ChatPageBodyState createState() => _ChatPageBodyState();
+}
+
+class _ChatPageBodyState extends State<ChatPageBody> {
+  bool inGroup;
+
+  @override
+  void initState() {
+    super.initState();
+
+    inGroup = widget.event.attendees.contains("0");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        if (!inGroup) {
+          Container(
+            color: Colors.black12,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(5),
+                    child: Text("You are not attending this event, do you want to join?"),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(right: 5),
+                  child: FlatButton(
+                    autofocus: false,
+                    clipBehavior: Clip.antiAlias,
+                    child: Text("Join"),
+                    color: Colors.blue,
+                    onPressed: (){print("clicked");},
+                  ),
+                )
+              ],
+            ),
+          )
+        }.first,
+        MessageList(controller: widget.controller),
+        ChatForm(controller: widget.controller),
+      ],
     );
   }
 }
@@ -138,18 +194,20 @@ class _MessageListState extends State<MessageList> {
 
     User user = DatabaseMock.getUser(msg.key);
 
-    String username = msg.key == idUser ? "You" : "${user.name}";
+    String username = ownMessage ? "You" : "${user.name}";
 
     Widget userTitle = Container(
       margin: EdgeInsets.only(top: 10, bottom: 5),
       child: Row(
         children: <Widget>[
-          CircleAvatar(
-            maxRadius: 15,
-            backgroundImage: NetworkImage(
-              user.picUrl
-            ),
-          ),
+          if (!ownMessage) { 
+            CircleAvatar(
+             maxRadius: 15,
+             backgroundImage: NetworkImage(
+               user.picUrl
+             ),
+            )
+          }.first,
           Container(
             margin: EdgeInsets.only(left: 5),
             child: Text(
@@ -174,13 +232,20 @@ class _MessageListState extends State<MessageList> {
       child: Text("${msg.text}"),
     );
 
+    MainAxisAlignment alignment = ownMessage ? MainAxisAlignment.end : MainAxisAlignment.start;
+
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        mainAxisAlignment: alignment,
         children: <Widget>[
-          userTitle,
-          textContainer
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              userTitle,
+              textContainer
+            ],
+          ),
         ],
       ),
     );
