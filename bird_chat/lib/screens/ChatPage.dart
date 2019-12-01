@@ -144,7 +144,12 @@ class _MessageListState extends State<MessageList> {
       margin: EdgeInsets.only(top: 10, bottom: 5),
       child: Row(
         children: <Widget>[
-          Icon(Icons.person),
+          CircleAvatar(
+            maxRadius: 15,
+            backgroundImage: NetworkImage(
+              user.picUrl
+            ),
+          ),
           Container(
             margin: EdgeInsets.only(left: 5),
             child: Text(

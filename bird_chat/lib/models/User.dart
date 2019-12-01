@@ -17,7 +17,7 @@ class User extends Serializable{
       affiliation: json['Affiliation'],
       bio: json['Bio'],
       url: json['URL'],
-      picUrl: json['picUrl']
+      picUrl: json['PictureURL']
     );
   }
 
