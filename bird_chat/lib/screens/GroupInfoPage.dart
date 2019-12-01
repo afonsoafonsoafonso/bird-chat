@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:bird_chat/models/User.dart';
 import 'package:bird_chat/models/date.dart';
 import 'package:bird_chat/models/events.dart';
@@ -8,15 +6,59 @@ import 'package:bird_chat/models/time.dart';
 import 'package:bird_chat/screens/profile_page.dart';
 import 'package:bird_chat/services/DatabaseMock.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
-class GroupInfoPage extends StatelessWidget {
+
+class GroupInfoPage extends StatefulWidget {
   static const String route = "/groupinfo";
 
   final Event event;
 
   GroupInfoPage({this.event});
+
+  @override
+  State<StatefulWidget> createState() {
+    return _GroupInfoPage();
+  }
+}
+
+class _GroupInfoPage extends State<GroupInfoPage> {
+
+  bool isPartOf; 
+
+  // Widget joinButton =  RaisedButton (
+  //       onPressed: null,
+  //       textColor: Colors.white,
+  //       color: Colors.blueAccent,
+  //       child:const Text(
+  //         'Joined',
+  //         style: TextStyle(fontSize: 15)
+  //       ),
+  //     );
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Hard coded current user -> need to change this
+    isPartOf = DatabaseMock.isUserInGroup('dariodinucci', widget.event.id);
+
+    // if(!isPartOf) {
+    //   joinButton = RaisedButton (
+    //     onPressed: () {
+    //       DatabaseMock.addUserToGroup('dariodinucci', widget.event.id);
+    //       isPartOf = true;
+    //     },
+    //     textColor: Colors.white,
+    //     color: Colors.blueAccent,
+    //     child:const Text(
+    //       'Join',
+    //       style: TextStyle(fontSize: 15)
+    //     ),
+    //   );
+    // }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +77,7 @@ class GroupInfoPage extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.pushNamed(context, ProfilePage.route,
-                    arguments: event.creator);
+                    arguments: widget.event.creator);
               },
             ),
           )
@@ -47,33 +89,58 @@ class GroupInfoPage extends StatelessWidget {
           children: <Widget>[
             //Title
             Text(
-              event.title,
+              widget.event.title,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             //Title location
             Text(
-              event.location,
+              widget.event.location,
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.black54,
               ),
             ),
             Text(
-              eventDateSring(event.startTime),
+              eventDateSring(widget.event.startTime),
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.black54,
               ),
             ),
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget> [
+                RaisedButton (
+                  onPressed: () {
+                    if(isPartOf) {
+                      return;
+                    }
+                    
+                    DatabaseMock.addUserToGroup('dariodinucci', widget.event.id);
+                    isPartOf = true;
+                  },
+                  textColor: Colors.white,
+                  color: (isPartOf)? Colors.grey : Colors.blueAccent,
+                  child: (isPartOf)? const Text(
+                    'Joined',
+                    style: TextStyle(fontSize: 15)
+                  ) : 
+                  const Text(
+                    'Join',
+                    style: TextStyle(fontSize: 15)
+                  )
+                )
+              ]
+            ),
             Divider(
               thickness: 1,
             ),
-            Text(event.description),
+            Text(widget.event.description),
             Divider(
               thickness: 1,
             ),
             PeopleList(
-              event: event,
+              event: widget.event,
             ),
           ],
         ),

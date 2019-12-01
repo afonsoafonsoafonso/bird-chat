@@ -66,4 +66,21 @@ class DatabaseMock {
   static getUser(String key) {
     return usersMap[key];
   }
+
+  static bool isUserInGroup(String userKey, int groupKey) {
+
+    Event event = events[groupKey];
+
+    for(var i=0; i<event.attendees.length; i++) {
+      if(event.attendees[i] == userKey) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  static void addUserToGroup(String userKey, int groupKey) {
+    events[groupKey].attendees.add(userKey);
+  }
 }
