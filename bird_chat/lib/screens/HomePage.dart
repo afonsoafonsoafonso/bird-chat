@@ -60,24 +60,25 @@ class _Home extends State<Home> {
                 ),
                 onPressed: () {},
               ),
-              new Stack(children: <Widget>[
-                new IconButton(
-                  icon: Icon(
-                    Icons.event,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      if (page == "MyEvents") {
-                        return;
-                      }
+              new Stack(
+                children: <Widget>[
+                  new IconButton(
+                    icon: Icon(
+                      Icons.event,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        if (page == "MyEvents") {
+                          return;
+                        }
 
-                      page = "MyEvents";
-                      pageBody = new MyEventsBody();
-                    });
-                  },
-                ),
-                new EventNotification(),
-              ])
+                        page = "MyEvents";
+                        pageBody = new MyEventsBody();
+                      });
+                    },
+                  ),
+                ]
+              )
             ],
           ),
         ),

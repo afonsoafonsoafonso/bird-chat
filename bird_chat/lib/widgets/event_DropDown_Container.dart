@@ -23,7 +23,7 @@ class EventDropDownContainer extends StatelessWidget {
       ),
       child: Column (
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget> [
           Container(
             margin: EdgeInsets.only(left: 10, top: 10, bottom: 10),
