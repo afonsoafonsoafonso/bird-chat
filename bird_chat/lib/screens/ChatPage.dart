@@ -1,7 +1,7 @@
-import 'dart:math';
-
+import 'package:bird_chat/models/User.dart';
 import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/screens/GroupInfoPage.dart';
+import 'package:bird_chat/services/DatabaseMock.dart';
 import 'package:bird_chat/services/MessagesController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -24,15 +24,15 @@ class ChatPage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.menu),
             onPressed: () {
-              Navigator.pushNamed(context, GroupInfoPage.route);
+              Navigator.pushNamed(context, GroupInfoPage.route, arguments: event);
             },
           )
         ],
       ),
       body: Column(
         children: <Widget>[
-          MessageList(controller),
-          ChatForm(controller),
+          MessageList(controller: controller),
+          ChatForm(controller: controller),
         ],
       ),
     );
@@ -41,27 +41,20 @@ class ChatPage extends StatelessWidget {
 
 class ChatForm extends StatefulWidget {
 
-  MessagesController controller;
-  ChatForm(MessagesController controller) {
-    this.controller = controller;
-  }
+  final MessagesController controller;
+  ChatForm({this.controller});
 
   @override
-  _ChatFormState createState() => _ChatFormState(controller);
+  _ChatFormState createState() => _ChatFormState();
 }
 
 class _ChatFormState extends State<ChatForm> {
   final textController = new TextEditingController();
 
-  MessagesController controller;
-
-  _ChatFormState(MessagesController controller) {
-    this.controller = controller;
-  }
-
   @override
   void dispose() {
     textController.dispose();
+    
     super.dispose();
   }
 
@@ -100,14 +93,13 @@ class _ChatFormState extends State<ChatForm> {
 
   void _submit() {
     String text = textController.text;
-    textController.clear();
 
-    controller.addMessage(Message(
+    widget.controller.addMessage(Message(
       key: "0",
-      name: "0",
       text: text,
       timestamp: new DateTime.now().millisecondsSinceEpoch,
     ));
+    textController.clear();
 
     return;
   }
@@ -115,48 +107,38 @@ class _ChatFormState extends State<ChatForm> {
 
 class MessageList extends StatefulWidget {
 
-  MessagesController controller;
-
-  MessageList(MessagesController controller) {
-    this.controller = controller;
-  }
+  final MessagesController controller;
+  MessageList({this.controller});
 
   @override
-  _MessageListState createState() => _MessageListState(controller);
+  _MessageListState createState() => _MessageListState();
 }
 
 class _MessageListState extends State<MessageList> {
   final scrollController = new ScrollController();
-  
-  final lorem =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
   List<Message> messages = <Message>[];
   String idUser = "0";
 
-  MessagesController controller;
-
-  _MessageListState(MessagesController controller) {
-    this.controller = controller;
-  }
-
   @override
   void initState() {
     super.initState();
-    controller.updateFunction = (msgs) {
+
+    widget.controller.updateFunction = (msgs) {
       setState(() {
-        print("updated");
         messages = msgs;
       });
     };
-    controller.getMessages();
+    widget.controller.getMessages();
   }
 
   Widget _buildMessageCard(int i, Message msg) {
 
     bool ownMessage = msg.key == idUser;
 
-    String username = msg.key == idUser ? "You" : "${msg.name} ${msg.key}";
+    User user = DatabaseMock.getUser(msg.key);
+
+    String username = msg.key == idUser ? "You" : "${user.name}";
 
     Widget userTitle = Container(
       margin: EdgeInsets.only(top: 10, bottom: 5),
@@ -199,18 +181,6 @@ class _MessageListState extends State<MessageList> {
     );
   }
 
-  void _populateMessages() {
-    for (int i = 0; i < 10; i++) {
-      int id = Random().nextInt(10);
-      messages.add(new Message(
-        key: "$id",
-        name: "user",
-        text: lorem,
-        timestamp: 0
-      ));
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -221,10 +191,6 @@ class _MessageListState extends State<MessageList> {
         padding: EdgeInsets.all(5),
         itemCount: messages.length,
         itemBuilder: (context, i) {
-          //if (i >= messages.length) {
-          //  _populateMessages();
-          //}
-
           return _buildMessageCard(i, messages[i]);
         },
       ),

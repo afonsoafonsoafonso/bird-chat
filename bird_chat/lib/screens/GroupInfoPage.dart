@@ -1,8 +1,14 @@
+import 'dart:convert';
+
+import 'package:bird_chat/models/User.dart';
 import 'package:bird_chat/models/date.dart';
 import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/models/startTime.dart';
 import 'package:bird_chat/models/time.dart';
+import 'package:bird_chat/screens/profile_page.dart';
+import 'package:bird_chat/services/DatabaseMock.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 class GroupInfoPage extends StatelessWidget {
@@ -27,7 +33,10 @@ class GroupInfoPage extends StatelessWidget {
                   Text("Creator Profile"),
                 ],
               ),
-              onTap: (){},
+              onTap: () {
+                Navigator.pushNamed(context, ProfilePage.route,
+                    arguments: event.creator);
+              },
             ),
           )
         ],
@@ -37,20 +46,20 @@ class GroupInfoPage extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             //Title
-            Text(event.title,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold
-              ),
+            Text(
+              event.title,
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             //Title location
-            Text(event.location,
+            Text(
+              event.location,
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.black54,
               ),
             ),
-            Text(eventDateSring(event.startTime),
+            Text(
+              eventDateSring(event.startTime),
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.black54,
@@ -63,7 +72,9 @@ class GroupInfoPage extends StatelessWidget {
             Divider(
               thickness: 1,
             ),
-            //PeopleList(),
+            PeopleList(
+              event: event,
+            ),
           ],
         ),
       ),
@@ -76,11 +87,13 @@ class GroupInfoPage extends StatelessWidget {
 
     return "${date.day}/${date.month}/${date.year} ${time.hours}:${time.minutes}";
   }
-
 }
 
 class PeopleList extends StatefulWidget {
+  final Event event;
+
   const PeopleList({
+    this.event,
     Key key,
   }) : super(key: key);
 
@@ -89,52 +102,53 @@ class PeopleList extends StatefulWidget {
 }
 
 class _PeopleListState extends State<PeopleList> {
+  bool peopleVisible = false;
 
-  bool loading = true;
-  Widget listWidget = Center(child: CircularProgressIndicator(),);
+  List<String> attendees;
+  Future<List<Widget>> widgets;
 
-  Future<Widget> getCardsWidget() {
-    List<Widget> texts = <Widget>[];
+  @override
+  void initState() {
+    super.initState();
 
-    for (var i = 0; i < 100; i++) {
-      texts.add(
+    attendees = widget.event.attendees;
+
+    widgets = _getEventUsers();
+  }
+
+  Future<List<Widget>> _getEventUsers() async {
+    List<Widget> widgets = <Widget>[];
+
+    for (String key in attendees) {
+
+      User user = DatabaseMock.getUser(key);
+
+      widgets.add(
         InkWell(
-          onTap: () {Navigator.pushNamed(context, "profile");},
+          onTap: () {
+            Navigator.pushNamed(context, ProfilePage.route, arguments: key);
+          },
           child: Container(
             margin: EdgeInsets.symmetric(vertical: 10),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Icon(Icons.people),
-                Container(
-                  margin: EdgeInsets.only(
-                    left: 10
-                  ),
-                  child: Text(
-                    "person name"
+                Icon(Icons.person),
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.only(left: 5),
+                    child: Text(user.name),
                   ),
                 )
               ],
             ),
           ),
-        )
+        ),
       );
     }
 
-    return Future(()=>Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: texts
-    ));
+    return widgets;
   }
-
-  void getCards() async {
-    Widget widget = await getCardsWidget();
-    setState(() {
-      listWidget = widget;
-    });
-    loading = false;
-  }
-
-  bool peopleVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -146,25 +160,39 @@ class _PeopleListState extends State<PeopleList> {
             children: <Widget>[
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-                  child: Text("num people"),
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Text("${attendees.length} people."),
                 )
               ),
-              peopleVisible ? Icon(Icons.arrow_downward) : Icon(Icons.arrow_forward)
+              peopleVisible
+                  ? Icon(Icons.arrow_downward)
+                  : Icon(Icons.arrow_forward)
             ],
           ),
           onTap: () {
             setState(() {
               peopleVisible = !peopleVisible;
-              if (loading) {
-                getCards();
-              }
-            });  
+            });
           },
         ),
         Visibility(
           visible: peopleVisible,
-          child: listWidget,
+          child: FutureBuilder(
+            future: widgets,
+            builder: (context, snapshot) {
+              if (snapshot.data != null) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: snapshot.data,
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          ),
         )
       ],
     );
