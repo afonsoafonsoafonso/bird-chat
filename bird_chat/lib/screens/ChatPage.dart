@@ -3,6 +3,7 @@ import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/screens/GroupInfoPage.dart';
 import 'package:bird_chat/services/DatabaseMock.dart';
 import 'package:bird_chat/services/MessagesController.dart';
+import 'package:bird_chat/services/Session.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:bird_chat/models/Message.dart';
@@ -54,7 +55,7 @@ class _ChatPageBodyState extends State<ChatPageBody> {
   void initState() {
     super.initState();
 
-    inGroup = widget.event.attendees.contains("0");
+    inGroup = widget.event.attendees.contains(Session.user.key);
   }
 
   @override
@@ -95,7 +96,7 @@ class _ChatPageBodyState extends State<ChatPageBody> {
   }
 
   void _attendEvent() {
-    DatabaseMock.attendEvent(widget.event, User(key: "0", affiliation: '', bio: '', name: 'Menino', picUrl: '', url: ''));
+    DatabaseMock.attendEvent(widget.event, Session.user);
 
     setState(() {
       inGroup = widget.event.attendees.contains("0");
@@ -159,7 +160,7 @@ class _ChatFormState extends State<ChatForm> {
     String text = textController.text;
 
     widget.controller.addMessage(Message(
-      key: "0",
+      key: Session.user.key,
       text: text,
       timestamp: new DateTime.now().millisecondsSinceEpoch,
     ));
@@ -182,7 +183,6 @@ class _MessageListState extends State<MessageList> {
   final scrollController = new ScrollController();
 
   List<Message> messages = <Message>[];
-  String idUser = "0";
 
   @override
   void initState() {
@@ -198,7 +198,7 @@ class _MessageListState extends State<MessageList> {
 
   Widget _buildMessageCard(int i, Message msg) {
 
-    bool ownMessage = msg.key == idUser;
+    bool ownMessage = msg.key == Session.user.key;
 
     User user = DatabaseMock.getUser(msg.key);
 
