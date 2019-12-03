@@ -1,4 +1,5 @@
 import 'package:bird_chat/models/events.dart';
+import 'package:bird_chat/services/DatabaseMock.dart';
 import 'package:bird_chat/services/backend.dart';
 import 'package:bird_chat/widgets/TextFormControlled.dart';
 import 'package:flutter/material.dart';
@@ -120,8 +121,13 @@ class _CreatePageState extends State<CreatePage> {
           final form = _formKey.currentState;
           if (form.validate()) {
             form.save();
+            /*
             var controller = new HTMLHandler();
             controller.send(_event);
+            */
+            DatabaseMock.addEvent(_event);
+            
+
             Navigator.pop(context);
             
           }

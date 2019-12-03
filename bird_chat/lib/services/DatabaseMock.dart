@@ -70,4 +70,8 @@ class DatabaseMock {
   static void attendEvent(Event event, User user) {
     event.attendees.add(user.key);
   }
+
+  static void addEvent(Event event){
+   events.add(event) ;
+  }
 }
