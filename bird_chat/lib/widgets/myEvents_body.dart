@@ -9,8 +9,6 @@ class MyEventsBody extends StatelessWidget {
 
   final List<Event> events = [];
   Future<List<Event>> _events() async {
-
-    // TODO: Hard-coded current user -> fix
     return DatabaseMock.getEvents("0", "mine");
   }
 
