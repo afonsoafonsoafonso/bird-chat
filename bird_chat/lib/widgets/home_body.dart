@@ -5,13 +5,20 @@ import 'package:bird_chat/widgets/event_Container.dart';
 import 'package:bird_chat/models/events.dart';
 
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends StatefulWidget {
 
+  @override
+  State<StatefulWidget> createState() {
+    return _HomeBody();
+  }
+}
+
+class _HomeBody extends State<HomeBody> {
   final List<Event> events = [];
   Future<List<Event>> _events() async {
 
     // TODO: Hard-coded current user -> fix
-    return DatabaseMock.getEvents("dariodinucci", "new");
+    return DatabaseMock.getEvents("0", "new");
   }
 
   @override
