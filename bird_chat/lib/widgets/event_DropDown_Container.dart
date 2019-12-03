@@ -43,7 +43,7 @@ class EventDropDownContainer extends StatelessWidget {
   }
 
   String _eventStartTimeString(DateTime startTime) {
-    DateFormat format = DateFormat("HH:mm'h' = dd/MM/yyyy");
+    DateFormat format = DateFormat("HH:mm'h' - dd/MM/yyyy");
     return "Starts: " + format.format(startTime);
   }
 }
