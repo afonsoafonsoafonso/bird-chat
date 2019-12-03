@@ -1,8 +1,8 @@
 import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/services/DatabaseMock.dart';
+import 'package:bird_chat/services/Session.dart';
 import 'package:bird_chat/widgets/TextFormControlled.dart';
 import 'package:flutter/material.dart';
-import 'package:bird_chat/temp.dart';
 
 class CreatePage extends StatefulWidget {
   static const String route = '/create';
@@ -14,7 +14,7 @@ class CreatePage extends StatefulWidget {
 class _CreatePageState extends State<CreatePage> {
   final _formKey = GlobalKey<FormState>();
 
-  var _event = Event(id: 0, creator: userKey);
+  var _event = Event(id: 0, creator: Session.user.key);
 
   @override
   Widget build(BuildContext context) {
