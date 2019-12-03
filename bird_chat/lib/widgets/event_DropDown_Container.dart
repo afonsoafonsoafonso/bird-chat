@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:bird_chat/widgets/tag.dart';
-
 import 'package:bird_chat/models/startTime.dart';
 
 class EventDropDownContainer extends StatelessWidget {
 
   final StartTime startTime;
   final String description;
-  final List<String> tags;
 
-  EventDropDownContainer({this.startTime, this.description, this.tags});
+  EventDropDownContainer({this.startTime, this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -48,16 +45,7 @@ class EventDropDownContainer extends StatelessWidget {
             child: Text(
               this.description
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(right: 10, top: 10, bottom: 20, left: 10),
-            child: Wrap(
-              spacing: 10,
-              children: <Widget> [
-                for(String tagName in this.tags ) new Tag(tagName: tagName)
-              ],
-            ),
-          ),
+          )
         ]
       ),
     );

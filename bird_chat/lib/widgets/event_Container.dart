@@ -85,8 +85,7 @@ class _EventContainer extends State<EventContainer> {
           Visibility(
             child: new EventDropDownContainer(
               startTime: widget.event.startTime,
-              description: widget.event.description,
-              tags: widget.event.tags
+              description: widget.event.description
             ),
             visible: isOpen? true : false,
           ),

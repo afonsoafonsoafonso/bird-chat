@@ -99,7 +99,7 @@ class _ChatPageBodyState extends State<ChatPageBody> {
     DatabaseMock.attendEvent(widget.event, Session.user);
 
     setState(() {
-      inGroup = widget.event.attendees.contains("0");
+      inGroup = widget.event.attendees.contains(Session.user.key);
     });
   }
 }

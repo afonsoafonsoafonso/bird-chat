@@ -9,11 +9,10 @@ class Event implements Serializable{
   String location;
   StartTime startTime;
   String description;
-  List<String> tags;
   List<String> attendees;
   String startTimeString;
   
-  Event({this.id, this.creator, this.title, this.location, this.startTime, this.description, this.tags, this.attendees});
+  Event({this.id, this.creator, this.title, this.location, this.startTime, this.description, this.attendees});
 
   factory Event.fromJson(Map<String,dynamic> json) {
     return Event (
@@ -25,7 +24,6 @@ class Event implements Serializable{
         json['startTime']
       ),
       description: json['description'] as String,
-      tags: _parseTags(json['tags']),
       attendees: _parseAttendees(json['attendees'])
     );
   }
@@ -34,13 +32,6 @@ class Event implements Serializable{
     List<String> list = List<String>.from((attendes));
 
     return list;
-  }
-
-  static List<String> _parseTags(tagsJson) {
-
-    List<String> tagsList = new List<String>.from((tagsJson));
-
-    return tagsList;
   }
 
   @override
@@ -52,7 +43,6 @@ class Event implements Serializable{
       'location' : location,
       'starttime': startTimeString,
       'description' : description,
-      'tags' : tags,
     };
 }
 
