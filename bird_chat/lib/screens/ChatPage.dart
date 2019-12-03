@@ -1,7 +1,7 @@
-import 'dart:math';
-
+import 'package:bird_chat/models/User.dart';
 import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/screens/GroupInfoPage.dart';
+import 'package:bird_chat/services/DatabaseMock.dart';
 import 'package:bird_chat/services/MessagesController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -14,7 +14,6 @@ class ChatPage extends StatelessWidget {
   final MessagesController controller;
 
   ChatPage({this.event, this.controller});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,44 +23,102 @@ class ChatPage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.menu),
             onPressed: () {
-              Navigator.pushNamed(context, GroupInfoPage.route);
+              Navigator.pushNamed(context, GroupInfoPage.route, arguments: event);
             },
           )
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          MessageList(controller),
-          ChatForm(controller),
-        ],
-      ),
+      body: new ChatPageBody(controller: controller, event: event,),
     );
+  }
+}
+
+class ChatPageBody extends StatefulWidget {
+  const ChatPageBody({
+    Key key,
+    @required this.controller,
+    @required this.event
+  }) : super(key: key);
+
+  final MessagesController controller;
+  final Event event;
+
+  @override
+  _ChatPageBodyState createState() => _ChatPageBodyState();
+}
+
+class _ChatPageBodyState extends State<ChatPageBody> {
+  bool inGroup;
+
+  @override
+  void initState() {
+    super.initState();
+
+    inGroup = widget.event.attendees.contains("0");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        if (!inGroup) {
+          Container(
+            color: Colors.black12,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(5),
+                    child: Text("You are not attending this event, do you want to join?"),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(right: 5),
+                  child: FlatButton(
+                    autofocus: false,
+                    clipBehavior: Clip.antiAlias,
+                    child: Text("Join"),
+                    color: Colors.blue,
+                    onPressed: (){_attendEvent();},
+                  ),
+                )
+              ],
+            ),
+          )
+        }.first,
+        MessageList(controller: widget.controller),
+        ChatForm(controller: widget.controller),
+      ],
+    );
+  }
+
+  void _attendEvent() {
+    DatabaseMock.attendEvent(widget.event, User(key: "0", affiliation: '', bio: '', name: 'Menino', picUrl: '', url: ''));
+
+    setState(() {
+      inGroup = widget.event.attendees.contains("0");
+    });
   }
 }
 
 class ChatForm extends StatefulWidget {
 
-  MessagesController controller;
-  ChatForm(MessagesController controller) {
-    this.controller = controller;
-  }
+  final MessagesController controller;
+  ChatForm({this.controller});
 
   @override
-  _ChatFormState createState() => _ChatFormState(controller);
+  _ChatFormState createState() => _ChatFormState();
 }
 
 class _ChatFormState extends State<ChatForm> {
   final textController = new TextEditingController();
 
-  MessagesController controller;
-
-  _ChatFormState(MessagesController controller) {
-    this.controller = controller;
-  }
-
   @override
   void dispose() {
     textController.dispose();
+    
     super.dispose();
   }
 
@@ -100,14 +157,13 @@ class _ChatFormState extends State<ChatForm> {
 
   void _submit() {
     String text = textController.text;
-    textController.clear();
 
-    controller.addMessage(Message(
-      key: "user",
-      name: "user",
+    widget.controller.addMessage(Message(
+      key: "0",
       text: text,
       timestamp: new DateTime.now().millisecondsSinceEpoch,
     ));
+    textController.clear();
 
     return;
   }
@@ -115,51 +171,51 @@ class _ChatFormState extends State<ChatForm> {
 
 class MessageList extends StatefulWidget {
 
-  MessagesController controller;
-
-  MessageList(MessagesController controller) {
-    this.controller = controller;
-  }
+  final MessagesController controller;
+  MessageList({this.controller});
 
   @override
-  _MessageListState createState() => _MessageListState(controller);
+  _MessageListState createState() => _MessageListState();
 }
 
 class _MessageListState extends State<MessageList> {
   final scrollController = new ScrollController();
-  
-  final lorem =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
   List<Message> messages = <Message>[];
   String idUser = "0";
 
-  MessagesController controller;
-
-  _MessageListState(MessagesController controller) {
-    this.controller = controller;
-  }
-
   @override
   void initState() {
     super.initState();
-    controller.updateFunction = (msgs) {
-      messages = msgs;
+
+    widget.controller.updateFunction = (msgs) {
+      setState(() {
+        messages = msgs;
+      });
     };
-    controller.getMessages();
+    widget.controller.getMessages();
   }
 
   Widget _buildMessageCard(int i, Message msg) {
 
     bool ownMessage = msg.key == idUser;
 
-    String username = msg.key == idUser ? "You" : "${msg.name} ${msg.key}";
+    User user = DatabaseMock.getUser(msg.key);
+
+    String username = ownMessage ? "You" : "${user.name}";
 
     Widget userTitle = Container(
       margin: EdgeInsets.only(top: 10, bottom: 5),
       child: Row(
         children: <Widget>[
-          Icon(Icons.person),
+          if (!ownMessage) { 
+            CircleAvatar(
+             maxRadius: 15,
+             backgroundImage: NetworkImage(
+               user.picUrl
+             ),
+            )
+          }.first,
           Container(
             margin: EdgeInsets.only(left: 5),
             child: Text(
@@ -184,28 +240,23 @@ class _MessageListState extends State<MessageList> {
       child: Text("${msg.text}"),
     );
 
+    MainAxisAlignment alignment = ownMessage ? MainAxisAlignment.end : MainAxisAlignment.start;
+
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        mainAxisAlignment: alignment,
         children: <Widget>[
-          userTitle,
-          textContainer
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              userTitle,
+              textContainer
+            ],
+          ),
         ],
       ),
     );
-  }
-
-  void _populateMessages() {
-    for (int i = 0; i < 10; i++) {
-      int id = Random().nextInt(10);
-      messages.add(new Message(
-        key: "$id",
-        name: "user",
-        text: lorem,
-        timestamp: 0
-      ));
-    }
   }
 
   @override
@@ -216,11 +267,8 @@ class _MessageListState extends State<MessageList> {
         scrollDirection: Axis.vertical,
         reverse: true,
         padding: EdgeInsets.all(5),
+        itemCount: messages.length,
         itemBuilder: (context, i) {
-          if (i >= messages.length) {
-            _populateMessages();
-          }
-
           return _buildMessageCard(i, messages[i]);
         },
       ),

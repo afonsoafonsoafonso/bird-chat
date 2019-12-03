@@ -3,7 +3,6 @@ import 'package:bird_chat/screens/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/home_body.dart';
 import 'package:bird_chat/widgets/myEvents_body.dart';
-import 'package:bird_chat/widgets/event_notification.dart';
 import 'CreatePage.dart';
 
 class Home extends StatefulWidget {
@@ -34,10 +33,9 @@ class _Home extends State<Home> {
       body: pageBody,
       bottomNavigationBar: new Container(
         color: Colors.white,
-        height: 50.0,
+        height: MediaQuery.of(context).size.height * 0.07,
         child: new BottomAppBar(
           child: new Row(
-            // alignment: MainAxisAlignment.spaceAround,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               new IconButton(
@@ -61,24 +59,25 @@ class _Home extends State<Home> {
                 ),
                 onPressed: () {},
               ),
-              new Stack(children: <Widget>[
-                new IconButton(
-                  icon: Icon(
-                    Icons.event,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      if (page == "MyEvents") {
-                        return;
-                      }
+              new Stack(
+                children: <Widget>[
+                  new IconButton(
+                    icon: Icon(
+                      Icons.event,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        if (page == "MyEvents") {
+                          return;
+                        }
 
-                      page = "MyEvents";
-                      pageBody = new MyEventsBody();
-                    });
-                  },
-                ),
-                new EventNotification(),
-              ])
+                        page = "MyEvents";
+                        pageBody = new MyEventsBody();
+                      });
+                    },
+                  ),
+                ]
+              )
             ],
           ),
         ),
@@ -112,9 +111,14 @@ class _Home extends State<Home> {
             ListTile(
                 title: Text('My Profile'),
                 onTap: () {
-                  Navigator.pop(context);
+                  //Navigator.pop(context);
                   //filler until we have profile app
-                  Navigator.pushNamed(context, ProfilePage.route);
+                  //Navigator.pushNamed(context, ProfilePage.route);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ProfilePage(profileKey: 'dariodinucci')));
                 }),
             ListTile(
                 title: Text('Example Chat'),

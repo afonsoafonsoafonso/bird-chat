@@ -2,7 +2,7 @@
   "Groups": [
     {
       "id": 0,
-      "creator":"radaval3000",
+      "creator":"asm99",
       "title": "Titulo da conversa so que grande o suficiente ahahahah",
       "location": "Local da conversa igualmente grande",
       "startTime": {
@@ -20,6 +20,11 @@
       "tags": [
         "TagA",
         "TagB"
+      ],
+      "attendees":[
+        "asm99",
+        "jmaria",
+        "coiso"
       ]
     },
     {
@@ -42,43 +47,65 @@
       "tags": [
         "TagC",
         "TagD"
+      ],
+      "attendees":[
+        "toferreira",
+        "asm99"
       ]
     }
   ],
   "People": [
     {
-      "Name": "Javarzio Radaval",
-      "Affiliation": "FEUP",
-      "Key":"radaval3000",
-      "Bio": "Tive 20 a tudo."
+      "Name": "Busto",
+      "Affiliation": "Antena 3",
+      "PictureURL": "https://vignette.wikia.nocookie.net/aleixo/images/e/e1/Busto.jpg/revision/latest/scale-to-width-down/300?cb=20121214125024",
+      "Key":"asm99",
+      "URL": "http://media.rtp.pt/antena3/  ",
+      "Bio": "Busto é uma estátua branca de pedra, natural da vila de Condeixa-a-Nova. Trabalhou como comentador nos talk-shows d'O Programa do Aleixo, na SIC Radical, e na rubrica matinal de rádio da Antena 3 Aleixo FM. "
     },
     {
-      "Name": "Emanuel Coiso",
-      "Affiliation": "FEUP",
-      "Key":"coiso"
+      "Name": "Pope Francis",
+      "Affiliation": "Roman Catholic Church",
+      "PictureURL": "https://www.biography.com/.image/t_share/MTE1ODA0OTcyMDMzNTQxNjQ1/pope-francis-21152349-2-402.jpg",
+      "Key":"coiso",
+      "Bio": "Pope Francis is the head of the Catholic Church and sovereign of the Vatican City State. Francis is the first Jesuit pope, the first from the Americas, the first from the Southern Hemisphere, and the first pope from outside Europe since the 8th century. ",
+      "URL": "http://www.vatican.va"
     },
     {
-      "Name": "Javarzia Maria",
-      "Affiliation": "FEUP",
-      "Key":"jmaria"
+      "Name": "Renato Alexandre",
+      "Affiliation": "Faculdade da Vida",
+      "PictureURL": "https://vignette.wikia.nocookie.net/aleixo/images/7/75/Renato_disco.jpg/revision/latest?cb=20121207145720",
+      "Key":"jmaria",
+      "Bio": "Renato é um monstro-da-lagoa-de-óbidos, oriundo da lagoa homónima, sita nos concelhos de Óbidos e Caldas da Rainha. Encontra-se a exercer estágio profissional na cidade de Lisboa, ocupação que concilia com a atividade de DJ. ",
+      "URL": "http://renato.botoes.co/"
     },
     {
-      "Name": "Manuel António Ferreira",
-      "Affiliation": "FEUP",
-      "key":"toferreira",
-      "Bio": "Primo de 14ª grau do lendário Tó Ferreira."
+      "Name": "Bruno Aleixo",
+      "Affiliation": "Não é da tua conta",
+      "PictureURL": "https://vignette.wikia.nocookie.net/aleixo/images/c/ca/Aleixo_fato.jpg/revision/latest?cb=20121206195613",
+      "Key":"toferreira",
+      "URL": "http://aleixo.botoes.co/",
+      "Bio": "Bruno Aleixo é uma figura pública que reside na cidade de Coimbra. Além do talk-show que apresentou em 2008/09 e 2012/13 (SIC Radical), poucos se sabe da sua ocupação profissional e muito menos de onde advêm os seus rendimentos. Vive sozinho num prédio com porteiro. "
+    },
+    {
+      "Name": "Dario Di Nucci",
+      "Affiliation": "Vrije Universiteit Brussel",
+      "PictureURL": "https://2019.programming-conference.org/getProfileImage/dariodinucci/6e954823-249a-484f-9dbf-e5462d7fa78e/small.jpg",
+      "Bio": "I am a research fellow at the Software Languages Lab of the Vrije Universiteit Brussel in Belgium. I received the PhD in Management and Information Technology from the University of Salerno in 2018 advised by Prof. Andrea De Lucia with a thesis entitled Methods and Tools for Focusing and Prioritizing the Testing Effort.",
+      "URL": "http://dardin88.github.io",
+      "Key": "dariodinucci"
     }
   ],
   "Messages": [
     {
       "groupID":0,
-      "user": "radaval3000",
+      "user": "asm99",
       "timestamp": 0,
       "text": "ola pessoas"
     },
     {
       "groupID":0,
-      "user": "radaval3000",
+      "user": "asm99",
       "timestamp": 1,
       "text": "prontos?"
     },
@@ -108,7 +135,7 @@
     },
     {
       "groupID":1,
-      "user": "radaval3000",
+      "user": "asm99",
       "timestamp": 6,
       "text": "la estarei"
     }
