@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/event_Container.dart';
 
+import 'package:bird_chat/services/DatabaseMock.dart';
 import 'package:bird_chat/models/events.dart';
-import 'package:bird_chat/services/eventsService.dart';
 
 
 class MyEventsBody extends StatelessWidget {
 
   final List<Event> events = [];
   Future<List<Event>> _events() async {
-    return EventsService.getEvents();
+
+    // TODO: Hard-coded current user -> fix
+    return DatabaseMock.getEvents("0", "mine");
   }
 
   @override
