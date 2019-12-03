@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:bird_chat/widgets/tag.dart';
-
 import 'package:bird_chat/models/startTime.dart';
 
 class EventDropDownContainer extends StatelessWidget {
