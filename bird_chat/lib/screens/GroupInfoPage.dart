@@ -1,8 +1,6 @@
+import 'package:intl/intl.dart';
 import 'package:bird_chat/models/User.dart';
-import 'package:bird_chat/models/date.dart';
 import 'package:bird_chat/models/events.dart';
-import 'package:bird_chat/models/startTime.dart';
-import 'package:bird_chat/models/time.dart';
 import 'package:bird_chat/screens/profile_page.dart';
 import 'package:bird_chat/services/DatabaseMock.dart';
 import 'package:flutter/material.dart';
@@ -78,11 +76,9 @@ class GroupInfoPage extends StatelessWidget {
     );
   }
 
-  String eventDateSring(StartTime startTime) {
-    Date date = startTime.date;
-    Time time = startTime.time;
-
-    return "${date.day}/${date.month}/${date.year} ${time.hours}:${time.minutes}";
+  String eventDateSring(DateTime startTime) {
+    DateFormat format = DateFormat("dd/MM/yyyy HH:mm");
+    return format.format(startTime);
   }
 }
 

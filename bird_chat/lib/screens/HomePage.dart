@@ -1,5 +1,6 @@
 import 'package:bird_chat/screens/ChatPage.dart';
 import 'package:bird_chat/screens/profile_page.dart';
+import 'package:bird_chat/services/Session.dart';
 import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/home_body.dart';
 import 'package:bird_chat/widgets/myEvents_body.dart';
@@ -92,30 +93,23 @@ class _Home extends State<Home> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text("Afonso Afonso Afonso"),
+              accountName: Text(Session.user.name),
               accountEmail: Text("AfonsoAfonsoAfonso@gmail.com"),
               currentAccountPicture: CircleAvatar(
                 backgroundColor:
                     Theme.of(context).platform == TargetPlatform.iOS
                         ? Colors.blue
                         : Colors.white,
-                child: Text(
-                  "A",
-                  style: TextStyle(fontSize: 40.0),
+                backgroundImage: NetworkImage(
+                  Session.user.picUrl
                 ),
               ),
+              
             ),
             ListTile(
                 title: Text('My Profile'),
                 onTap: () {
-                  //Navigator.pop(context);
-                  //filler until we have profile app
-                  //Navigator.pushNamed(context, ProfilePage.route);
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              ProfilePage(profileKey: 'dariodinucci')));
+                  Navigator.pushNamed(context, ProfilePage.route, arguments: Session.user.key);
                 }),
             ListTile(
                 title: Text('Example Chat'),

@@ -1,4 +1,3 @@
-import 'package:bird_chat/models/startTime.dart';
 import 'package:bird_chat/services/backend.dart';
 
 class Event implements Serializable{
@@ -7,10 +6,9 @@ class Event implements Serializable{
   String creator;
   String title;
   String location;
-  StartTime startTime;
+  DateTime startTime;
   String description;
   List<String> attendees;
-  String startTimeString;
   
   Event({this.id, this.creator, this.title, this.location, this.startTime, this.description, this.attendees});
 
@@ -20,9 +18,7 @@ class Event implements Serializable{
       creator: json['creator'] as String,
       title: json['title'] as String,
       location: json['location'] as String,
-      startTime: StartTime.fromJson(
-        json['startTime']
-      ),
+      startTime: DateTime.parse(json['startTime'] as String),
       description: json['description'] as String,
       attendees: _parseAttendees(json['attendees'])
     );
@@ -41,7 +37,7 @@ class Event implements Serializable{
       'creator' : creator,
       'title' : title, 
       'location' : location,
-      'starttime': startTimeString,
+      'starttime': startTime.toIso8601String(),
       'description' : description,
     };
 }
