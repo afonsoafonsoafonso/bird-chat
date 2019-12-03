@@ -50,7 +50,7 @@ class DatabaseMock {
     return messages.map<Message>((json) => Message.fromJson(json)).toList();
   }
   
-  static List<Event> getEvents(String userKey, String type) {
+  static List<Event> getEvents(User user, String type) {
 
     List<Event> newEvents = new List<Event>();
     bool isPartOf = false;
@@ -59,7 +59,7 @@ class DatabaseMock {
       
       for(var j=0; j<events[i].attendees.length; j++) { 
 
-        if(events[i].attendees[j] == userKey) {
+        if(events[i].attendees[j] == user.key) {
 
           isPartOf = true; 
           break;
