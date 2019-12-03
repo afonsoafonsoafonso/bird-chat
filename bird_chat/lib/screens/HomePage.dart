@@ -19,17 +19,15 @@ class _Home extends State<Home> {
 
   Widget pageBody = new HomeBody();
 
-  final topBar = new AppBar(
-    backgroundColor: Colors.blueAccent,
-    centerTitle: true,
-    elevation: 1.0,
-    title: SizedBox(height: 35.0),
-  );
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: topBar,
+      appBar: new AppBar(
+        backgroundColor: Colors.blueAccent,
+        centerTitle: true,
+        title: Text(page),
+        elevation: 1.0
+      ),
       body: pageBody,
       bottomNavigationBar: new Container(
         color: Colors.white,
@@ -67,11 +65,11 @@ class _Home extends State<Home> {
                     ),
                     onPressed: () {
                       setState(() {
-                        if (page == "MyEvents") {
+                        if (page == "My Events") {
                           return;
                         }
 
-                        page = "MyEvents";
+                        page = "My Events";
                         pageBody = new MyEventsBody();
                       });
                     },
