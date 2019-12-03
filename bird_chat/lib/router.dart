@@ -1,6 +1,6 @@
 import 'package:bird_chat/models/events.dart';
 import 'package:bird_chat/screens/GroupInfoPage.dart';
-import 'package:bird_chat/screens/home.dart';
+import 'package:bird_chat/screens/HomePage.dart';
 import 'package:bird_chat/screens/ChatPage.dart';
 import 'package:bird_chat/screens/profile_page.dart';
 import 'package:bird_chat/services/MessagesController.dart';

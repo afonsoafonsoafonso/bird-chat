@@ -36,7 +36,7 @@ class _EventContainer extends State<EventContainer> {
                     onTap: (){
                       Navigator.pushNamed(context, ChatPage.route, arguments: widget.event);
                     },
-                                  child: Container (
+                    child: Container (
                     height: 50,
                     padding: EdgeInsets.only(left: 7, top: 7, bottom: 7),
                     child: Column (
