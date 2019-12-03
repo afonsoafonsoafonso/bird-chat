@@ -130,7 +130,12 @@ class _PeopleListState extends State<PeopleList> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Icon(Icons.person),
+                CircleAvatar(
+                  maxRadius: 15,
+                  backgroundImage: NetworkImage(
+                    user.picUrl
+                  ),
+                ),
                 Expanded(
                   child: Container(
                     margin: EdgeInsets.only(left: 5),
