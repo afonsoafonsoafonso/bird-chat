@@ -50,7 +50,7 @@ class DatabaseMock {
     return messages.map<Message>((json) => Message.fromJson(json)).toList();
   }
   
-  static List<Event> getEvents(String userKey) {
+  static List<Event> getEvents(String userKey, String type) {
 
     List<Event> newEvents = new List<Event>();
     bool isPartOf = false;
@@ -66,41 +66,22 @@ class DatabaseMock {
         }
       }
 
-      if(!isPartOf) {
-        newEvents.add(events[i]);
+      if(type == "new") {
+        if(!isPartOf) {
+          newEvents.add(events[i]);
+        }
       }
-
-      isPartOf = false;
-    }
-
-    return newEvents;
-  }
-
-  static List<Event> getMyEvents(String userKey) {
-
-    List<Event> newEvents = new List<Event>();
-    bool isPartOf = false;
-
-    for(var i=0; i<events.length; i++) {
-      
-      for(var j=0; j<events[i].attendees.length; j++) {
-
-        if(events[i].attendees[j] == userKey) {
-          isPartOf = true; 
-          break;
+      else if(type == "mine") {
+        if(isPartOf) {
+          newEvents.add(events[i]);
         }
       }
 
-      if(isPartOf) {
-        newEvents.add(events[i]);
-      }
-
       isPartOf = false;
     }
 
     return newEvents;
   }
-
   static void addMessage(Message msg) {
     print(msg.text);
     messages.add(msg);

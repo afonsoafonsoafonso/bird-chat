@@ -11,7 +11,7 @@ class HomeBody extends StatelessWidget {
   Future<List<Event>> _events() async {
 
     // TODO: Hard-coded current user -> fix
-    return DatabaseMock.getEvents("dariodinucci");
+    return DatabaseMock.getEvents("dariodinucci", "new");
   }
 
   @override
