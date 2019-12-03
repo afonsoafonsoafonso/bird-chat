@@ -11,9 +11,7 @@ class MessagesController {
 
   void Function(List<Message>) updateFunction;
 
-  MessagesController({this.event}) {
-    
-  }
+  MessagesController({this.event});
 
   void getMessages() {
     updateFunction(messages.toList());

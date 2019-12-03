@@ -107,6 +107,7 @@ class _Home extends State<Home> {
                   style: TextStyle(fontSize: 40.0),
                 ),
               ),
+              
             ),
             ListTile(
                 title: Text('My Profile'),
