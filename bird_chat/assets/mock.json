@@ -7,10 +7,6 @@
       "location": "Local da conversa igualmente grande",
       "startTime": "2019-10-29T15:30:00",
       "description": "General description of what a group is. Long enough to see it flex.",
-      "tags": [
-        "TagA",
-        "TagB"
-      ],
       "attendees":[
         "asm99",
         "jmaria",
@@ -24,10 +20,6 @@
       "location": "The river duh",
       "startTime": "2019-10-30T15:30:00",
       "description": "Description",
-      "tags": [
-        "TagC",
-        "TagD"
-      ],
       "attendees":[
         "toferreira",
         "asm99"
@@ -38,22 +30,8 @@
       "creator":"toferreira",
       "title": "Conversation by the river 2",
       "location": "The river duh 2",
-      "startTime": {
-        "time": {
-          "hours": 15,
-          "minutes": 30
-        },
-        "date": {
-          "day": 30,
-          "month": 10,
-          "year": 2019
-        }
-      },
+      "startTime": "2019-10-29T15:30:00",
       "description": "Description 2",
-      "tags": [
-        "TagC",
-        "TagD"
-      ],
       "attendees":[
         "toferreira",
         "radaval3000",
