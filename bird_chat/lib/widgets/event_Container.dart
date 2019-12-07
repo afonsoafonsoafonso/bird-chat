@@ -33,6 +33,7 @@ class _EventContainer extends State<EventContainer> {
               Expanded (
                 flex: 7, 
                 child: InkWell(
+                    key: Key("ChatCard${widget.event.id}"),
                     onTap: (){
                       Navigator.pushNamed(context, ChatPage.route, arguments: widget.event);
                     },

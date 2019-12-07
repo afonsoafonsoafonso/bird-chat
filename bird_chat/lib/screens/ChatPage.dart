@@ -14,7 +14,7 @@ class ChatPage extends StatelessWidget {
   final Event event;
   final MessagesController controller;
 
-  ChatPage({this.event, this.controller});
+  ChatPage({this.event, this.controller}): super(key:Key("ChatPage"));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +22,10 @@ class ChatPage extends StatelessWidget {
         title: Text(event.title),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.menu),
+            icon: Icon(
+              Icons.menu,
+              key: Key("ChatDetailsButton"),
+            ),
             onPressed: () {
               Navigator.pushNamed(context, GroupInfoPage.route, arguments: event);
             },

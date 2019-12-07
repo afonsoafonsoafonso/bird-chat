@@ -11,7 +11,7 @@ class GroupInfoPage extends StatelessWidget {
 
   final Event event;
 
-  GroupInfoPage({this.event});
+  GroupInfoPage({this.event}) : super(key: Key("GroupDetails"));
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,7 @@ class GroupInfoPage extends StatelessWidget {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 5),
             child: InkWell(
+              key: Key("CreatorProfileButton"),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

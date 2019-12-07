@@ -9,6 +9,8 @@ import 'CreatePage.dart';
 class Home extends StatefulWidget {
   static const String route = '/';
 
+  Home() : super(key: Key("HomePage"));
+
   @override
   State<StatefulWidget> createState() {
     return _Home();
@@ -107,6 +109,7 @@ class _Home extends State<Home> {
               
             ),
             ListTile(
+                key: Key("MyProfileButton"),
                 title: Text('My Profile'),
                 onTap: () {
                   Navigator.pushNamed(context, ProfilePage.route, arguments: Session.user.key);
