@@ -12,6 +12,7 @@ class DatabaseMock {
   static List<Event> events;
   static Map<String, User> usersMap;
   static List<Message> messages;
+  static int lastEventId = 9999;
 
   static bool inited = false;
 
@@ -100,6 +101,9 @@ class DatabaseMock {
   }
 
   static void addEvent(Event event){
-   events.add(event) ;
+    event.id = lastEventId;
+    lastEventId++;
+    events.add(event) ;
+    
   }
 }
