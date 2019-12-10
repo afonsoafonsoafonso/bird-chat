@@ -1,6 +1,7 @@
 import 'package:bird_chat/services/DatabaseMock.dart';
 import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/event_Container.dart';
+import 'package:bird_chat/services/Session.dart';
 
 import 'package:bird_chat/models/events.dart';
 
@@ -16,7 +17,7 @@ class HomeBody extends StatefulWidget {
 class _HomeBody extends State<HomeBody> {
   final List<Event> events = [];
   Future<List<Event>> _events() async {
-    return DatabaseMock.getEvents("0", "new");
+    return DatabaseMock.getEvents(Session.user, "new");
   }
 
   @override

@@ -1,4 +1,3 @@
-import 'package:bird_chat/models/startTime.dart';
 import 'package:bird_chat/services/backend.dart';
 
 class Event implements Serializable{
@@ -7,13 +6,11 @@ class Event implements Serializable{
   String creator;
   String title;
   String location;
-  StartTime startTime;
+  DateTime startTime;
   String description;
-  List<String> tags;
   List<String> attendees;
-  String startTimeString;
   
-  Event({this.id, this.creator, this.title, this.location, this.startTime, this.description, this.tags, this.attendees});
+  Event({this.id, this.creator, this.title, this.location, this.startTime, this.description, this.attendees});
 
   factory Event.fromJson(Map<String,dynamic> json) {
     return Event (
@@ -21,11 +18,8 @@ class Event implements Serializable{
       creator: json['creator'] as String,
       title: json['title'] as String,
       location: json['location'] as String,
-      startTime: StartTime.fromJson(
-        json['startTime']
-      ),
+      startTime: DateTime.parse(json['startTime'] as String),
       description: json['description'] as String,
-      tags: _parseTags(json['tags']),
       attendees: _parseAttendees(json['attendees'])
     );
   }
@@ -36,13 +30,6 @@ class Event implements Serializable{
     return list;
   }
 
-  static List<String> _parseTags(tagsJson) {
-
-    List<String> tagsList = new List<String>.from((tagsJson));
-
-    return tagsList;
-  }
-
   @override
   Map<String, dynamic> toJson() =>
     {
@@ -50,9 +37,8 @@ class Event implements Serializable{
       'creator' : creator,
       'title' : title, 
       'location' : location,
-      'starttime': startTimeString,
+      'starttime': startTime.toIso8601String(),
       'description' : description,
-      'tags' : tags,
     };
 }
 

@@ -1,5 +1,6 @@
 import 'package:bird_chat/screens/ChatPage.dart';
 import 'package:bird_chat/screens/profile_page.dart';
+import 'package:bird_chat/services/Session.dart';
 import 'package:flutter/material.dart';
 import 'package:bird_chat/widgets/home_body.dart';
 import 'package:bird_chat/widgets/myEvents_body.dart';
@@ -7,6 +8,8 @@ import 'CreatePage.dart';
 
 class Home extends StatefulWidget {
   static const String route = '/';
+
+  Home() : super(key: Key("HomePage"));
 
   @override
   State<StatefulWidget> createState() {
@@ -19,17 +22,15 @@ class _Home extends State<Home> {
 
   Widget pageBody = new HomeBody();
 
-  final topBar = new AppBar(
-    backgroundColor: Colors.blueAccent,
-    centerTitle: true,
-    elevation: 1.0,
-    title: SizedBox(height: 35.0),
-  );
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: topBar,
+      appBar: new AppBar(
+        backgroundColor: Colors.blueAccent,
+        centerTitle: true,
+        title: Text(page),
+        elevation: 1.0
+      ),
       body: pageBody,
       bottomNavigationBar: new Container(
         color: Colors.white,
@@ -67,11 +68,11 @@ class _Home extends State<Home> {
                     ),
                     onPressed: () {
                       setState(() {
-                        if (page == "MyEvents") {
+                        if (page == "My Events") {
                           return;
                         }
 
-                        page = "MyEvents";
+                        page = "My Events";
                         pageBody = new MyEventsBody();
                       });
                     },
@@ -94,31 +95,24 @@ class _Home extends State<Home> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text("Afonso Afonso Afonso"),
+              accountName: Text(Session.user.name),
               accountEmail: Text("AfonsoAfonsoAfonso@gmail.com"),
               currentAccountPicture: CircleAvatar(
                 backgroundColor:
                     Theme.of(context).platform == TargetPlatform.iOS
                         ? Colors.blue
                         : Colors.white,
-                child: Text(
-                  "A",
-                  style: TextStyle(fontSize: 40.0),
+                backgroundImage: NetworkImage(
+                  Session.user.picUrl
                 ),
               ),
               
             ),
             ListTile(
+                key: Key("MyProfileButton"),
                 title: Text('My Profile'),
                 onTap: () {
-                  //Navigator.pop(context);
-                  //filler until we have profile app
-                  //Navigator.pushNamed(context, ProfilePage.route);
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              ProfilePage(profileKey: 'dariodinucci')));
+                  Navigator.pushNamed(context, ProfilePage.route, arguments: Session.user.key);
                 }),
             ListTile(
                 title: Text('Example Chat'),

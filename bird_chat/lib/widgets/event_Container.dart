@@ -33,6 +33,7 @@ class _EventContainer extends State<EventContainer> {
               Expanded (
                 flex: 7, 
                 child: InkWell(
+                    key: Key("ChatCard${widget.event.id}"),
                     onTap: (){
                       Navigator.pushNamed(context, ChatPage.route, arguments: widget.event);
                     },
@@ -85,8 +86,7 @@ class _EventContainer extends State<EventContainer> {
           Visibility(
             child: new EventDropDownContainer(
               startTime: widget.event.startTime,
-              description: widget.event.description,
-              tags: widget.event.tags
+              description: widget.event.description
             ),
             visible: isOpen? true : false,
           ),

@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
 
 class ProfilePage extends StatelessWidget {
-  ProfilePage({@required this.profileKey});
+  ProfilePage({@required this.profileKey}): super(key: Key("ProfilePage"));
 
   static const String route = 'profile';
 

@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:bird_chat/widgets/tag.dart';
-
-import 'package:bird_chat/models/startTime.dart';
+import 'package:intl/intl.dart';
 
 class EventDropDownContainer extends StatelessWidget {
 
-  final StartTime startTime;
+  final DateTime startTime;
   final String description;
-  final List<String> tags;
 
-  EventDropDownContainer({this.startTime, this.description, this.tags});
+  EventDropDownContainer({this.startTime, this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +25,7 @@ class EventDropDownContainer extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(left: 10, top: 10, bottom: 10),
             child: Text(
-              'Starts: ' + 
-              this.startTime.time.hours.toString() + 
-              ':' +
-              this.startTime.time.minutes.toString() +
-              'h - ' +
-              this.startTime.date.day.toString() +
-              '/' + 
-              this.startTime.date.month.toString() +
-              '/' + 
-              this.startTime.date.year.toString(),
+              _eventStartTimeString(startTime),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -48,18 +36,14 @@ class EventDropDownContainer extends StatelessWidget {
             child: Text(
               this.description
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(right: 10, top: 10, bottom: 20, left: 10),
-            child: Wrap(
-              spacing: 10,
-              children: <Widget> [
-                for(String tagName in this.tags ) new Tag(tagName: tagName)
-              ],
-            ),
-          ),
+          )
         ]
       ),
     );
+  }
+
+  String _eventStartTimeString(DateTime startTime) {
+    DateFormat format = DateFormat("HH:mm'h' - dd/MM/yyyy");
+    return "Starts: " + format.format(startTime);
   }
 }
