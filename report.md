@@ -8,3 +8,8 @@ This product's aim is to facilitate informal discussions in conferences, providi
 
 BirdChat aims to help people find other people to talk with on conferences.
 This enables them to spend more time discussing and exchanging ideas and less time actually looking for someone iterested in a talk, or usually just wasting it on a listening on conversations they are not interested in.
+
+## Project Management
+
+Links to tools that we are using to help us in **project management**:
+ * [Trello](https://trello.com/invite/b/NQOzfzT2/323d1af03456baaf1cf2993b6226a9fd/birdchat)
