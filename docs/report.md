@@ -181,14 +181,16 @@ As a conference attendee, I want to be able to view new events, so that I can ch
 
 **Acceptance tests**
 
-```
-```
+* Given I’m a logged-in attendeee
+* When I access the home page
+* Then the system shows me the new events that have been created
 
 **Value and effort**
 
 Value:
 
 Effort:
+
 
 #### Story #2
 
@@ -200,14 +202,20 @@ As a conference attendee, I want to be able to create a new event, so that I can
 
 **Acceptance tests**
 
-```
-```
+* Given I’m a logged-in attendeee
+* When I access the home page 
+* Then the system shows me the new events that have been created
+* When I click the button to create a new event
+* Then the system shows me a form to fill
+* When I fill the form with the necessary information in order to create an event
+* Then the system creates a new event
 
 **Value and effort**
 
 Value:
 
 Effort:
+
 
 #### Story #3
 
@@ -219,14 +227,18 @@ As a conference attendee, I want to be able to view the events that I've already
 
 **Acceptance tests**
 
-```
-```
+* Given I’m a logged-in attendeee
+* When I access the home page 
+* Then the system shows me the new events that have been created
+* When I click on the 'My Events' button
+* Then the system shows me a list of every event I'm a part of
 
 **Value and effort**
 
 Value:
 
 Effort:
+
 
 #### Story #4
 
@@ -239,14 +251,22 @@ As a conference attendee, I want to be able to view an event's details, so that 
 
 **Acceptance tests**
 
-```
-```
+* Given I’m a logged-in attendeee
+* When I access the home page 
+* Then the system shows me the new events that have been created
+* When I click one event's card arrow
+* Then the system shows me that event's details
+* When I click that event's title 
+* Then the system shows me that event's chat page
+* When I click the event details button
+* Then the system show me that event's details page
 
 **Value and effort**
 
 Value:
 
 Effort:
+
 
 #### Story #5
 
@@ -258,14 +278,20 @@ As a conference attendee, I want to be able to join an event, so that I can meet
 
 **Acceptance tests**
 
-```
-```
+* Given I’m a logged-in attendeee
+* When I access the home page 
+* Then the system shows me the new events that have been created
+* When I click one event's title
+* Then the system shows me that event's chat page
+* When I click the 'Join' button
+* Then the system adds me to that event's attendees list
 
 **Value and effort**
 
 Value:
 
 Effort:
+
 
 #### Story #6
 
@@ -277,8 +303,14 @@ As a conference attendee, I want to be able to use an events chat, so that I can
 
 **Acceptance tests**
 
-```
-```
+* Given I’m a logged-in attendeee
+* When I access the home page 
+* Then the system shows me the new events that have been created
+* When I click one event's title
+* Then the system shows me that event's chat page
+* Given I'm an attendee to that event
+* When I write to that chat
+* Then the system display my message to every other attendee
 
 **Value and effort**
 
@@ -286,13 +318,16 @@ Value:
 
 Effort:
 
+
 #### Story #7
 
 Not implemented. Depois escrever qualquer cena aqui ou remover (???)
 
+
 ### Story #8
 
 Não faz sentido tendo em conta que os perfis já vêm criados da base de dados da conferência. Escrever quallquer coisa aqui depois
+
 
 ### Story #9
 
@@ -312,6 +347,7 @@ Adicionar mockup
 Value:
 
 Effort:
+
 
 #### Story #10
 
