@@ -375,5 +375,5 @@ The BirdChat app starts with a main page that displays every new event that the 
 ## Project Management
 
 Links to tools that we are using to help us in **project management**:
- * [Trello](https://trello.com/invite/b/NQOzfzT2/323d1af03456baaf1cf2993b6226a9fd/birdchat)
+ * [Trello](https://trello.com/b/NQOzfzT2/birdchat)
 
