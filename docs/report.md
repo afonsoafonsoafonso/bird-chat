@@ -173,30 +173,6 @@ We know our demographic: the tech and software people are one of the most passio
 
 #### Story #1
 
-As a conference attendee, I want to be able to view my own profile, so that I get to check my personal information.
-
-**User interface mockup**
-
-![Mockup](../img/mockup1.png "UI Mockup 1")
-
-**Acceptance tests**
-
-```
-Scenario: In home page, navigate to user profile page
-    Given I have "HomePage" visible
-    When I open the drawer
-    And I tap the "MyProfileButton" button
-    Then I should have "ProfilePage" page on screen
-```
-
-**Value and effort**
-
-Value:
-
-Effort:
-
-#### Story #2
-
 As a conference attendee, I want to be able to view new events, so that I can choose which ones interest me.
 
 **User interface mockup**
@@ -214,7 +190,45 @@ Value:
 
 Effort:
 
+#### Story #2
+
+As a conference attendee, I want to be able to create a new event, so that I can chat and meet up with other attendees.
+
+**User interface mockup**
+
+![Mockup](../img/mockup6.png "UI Mockup 6")
+
+**Acceptance tests**
+
+```
+```
+
+**Value and effort**
+
+Value:
+
+Effort:
+
 #### Story #3
+
+As a conference attendee, I want to be able to view the events that I've already joined, so that I can continue to be updated with their current situation.
+
+**User interface mockup**
+
+![Mockup](../img/mockup7.png "UI Mockup 7")
+
+**Acceptance tests**
+
+```
+```
+
+**Value and effort**
+
+Value:
+
+Effort:
+
+#### Story #4
 
 As a conference attendee, I want to be able to view an event's details, so that I can see more of its information.
 
@@ -234,7 +248,7 @@ Value:
 
 Effort:
 
-#### Story #4
+#### Story #5
 
 As a conference attendee, I want to be able to join an event, so that I can meet and chat with other attendees.
 
@@ -253,8 +267,7 @@ Value:
 
 Effort:
 
-
-#### Story #5
+#### Story #6
 
 As a conference attendee, I want to be able to use an events chat, so that I can speak with the other attendees.
 
@@ -273,13 +286,21 @@ Value:
 
 Effort:
 
-#### Story #6
+#### Story #7
 
-As a conference attendee, I want to be able to create a new event, so that I can chat and meet up with other attendees.
+Not implemented. Depois escrever qualquer cena aqui ou remover (???)
+
+### Story #8
+
+Não faz sentido tendo em conta que os perfis já vêm criados da base de dados da conferência. Escrever quallquer coisa aqui depois
+
+### Story #9
+
+As a conference attendee, I want to see other group members' profiles.
 
 **User interface mockup**
 
-![Mockup](../img/mockup6.png "UI Mockup 6")
+Adicionar mockup
 
 **Acceptance tests**
 
@@ -292,17 +313,22 @@ Value:
 
 Effort:
 
-#### Story #7
+#### Story #10
 
-As a conference attendee, I want to be able to view the events that I've already joined, so that I can continue to be updated with their current situation.
+As a conference attendee, I want to be able to view my own profile, so that I get to check my personal information.
 
 **User interface mockup**
 
-![Mockup](../img/mockup7.png "UI Mockup 7")
+![Mockup](../img/mockup1.png "UI Mockup 1")
 
 **Acceptance tests**
 
 ```
+Scenario: In home page, navigate to user profile page
+    Given I have "HomePage" visible
+    When I open the drawer
+    And I tap the "MyProfileButton" button
+    Then I should have "ProfilePage" page on screen
 ```
 
 **Value and effort**
