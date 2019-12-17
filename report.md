@@ -31,13 +31,12 @@ Thank you!
 ---
 ## Product Vision
 
-This product's aim is to facilitate informal discussions in conferences, providing a way for people with similar interests to find each other.
+This product's aim is to facilitate informal and relaxed discussions, meet-ups and hangouts in conferences, providing a way for people with similar interests to find and meet each other.
 
 ---
 ## Elevator Pitch
 
-BirdChat aims to help people find other people to talk with on conferences.
-This enables them to spend more time discussing and exchanging ideas and less time actually looking for someone iterested in a talk, or usually just wasting it on a listening on conversations they are not interested in.
+We know our demographic: the tech and software people are one of the most passionate people about what they do that we can find nowaways. And this is a really good good thing, but this can lead to some underwhelming socialization aspects in big conferences and other similar events. What can happen is that discussions, talks and meet-ups between conference antendees eventually ends up being very tech-based and information heavy, which can be tiring. What if you just want to relax, hangout and talk about whatever you want to talk about? That's why we made BirdChat: a tool where people can arrange social events to talk about certain topics or visit someplace in the city or do a certain activity. There are no limits! You can talk about the conference activities, events, talk about football, music, go visit a museum on downtown or simply go get some dinner and some beers and see where that leads you to. Your call!
 
 
 ---
