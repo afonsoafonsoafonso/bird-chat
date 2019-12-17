@@ -108,7 +108,7 @@ This enables them to spend more time discussing and exchanging ideas and less ti
 *  **Preconditions and Postconditions**.  In order to join an event, the attendee must be logged in. In the end, the user will be joined to that event.
   
 *  **Normal Flow**. 
-  1. The attendee presses the home button.
+  	1. The attendee presses the home button.
 	2. The system will load and display the most recent events.
 	3. The attendee presses the event's title.
 	4. The system will show the event's chat.
@@ -125,10 +125,10 @@ This enables them to spend more time discussing and exchanging ideas and less ti
 *  **Preconditions and Postconditions**.  In order to use an event's chat, the attendee must be logged in and joined to the event. In the end, the user will be able to use the event's chat.
   
 *  **Normal Flow**. 
-  1. The attendee presses the home button.
-  2. The system will load and display the most recent events.
-  3. The attendee presses the event's title.
-  4. The system will show the event's chat.
+	1. The attendee presses the home button.
+  	2. The system will load and display the most recent events.
+  	3. The attendee presses the event's title.
+  	4. The system will show the event's chat.
 
 	
 #### Create Event:
@@ -140,7 +140,7 @@ This enables them to spend more time discussing and exchanging ideas and less ti
 *  **Preconditions and Postconditions**.  In order to create an event, the attendee must be logged in. In the end, the user will be manage an event.
   
 *  **Normal Flow**. 
-  1. The attendee presses the home button.
+  	1. The attendee presses the home button.
 	2. The system will load and display the most recent events.
 	3. The attendee presses the create event button.
 	4. The system will show a form fot he attendee to fill.
@@ -166,8 +166,8 @@ This enables them to spend more time discussing and exchanging ideas and less ti
 *  **Preconditions and Postconditions**.  In order to view joined events, the attendee must be logged in. In the end, the user will be manage to view a list of all of his joined events.
   
 *  **Normal Flow**. 
-    1. The attendee presses the 'My Events' button.
-	  2. The system will load and display his joined events.
+	1. The attendee presses the 'My Events' button.
+	2. The system will load and display his joined events.
 
 
 ### User stories
