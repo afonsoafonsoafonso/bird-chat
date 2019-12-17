@@ -45,8 +45,6 @@ This enables them to spend more time discussing and exchanging ideas and less ti
 
 ### Use case diagram 
 
-Use case image
-
 ![Use case diagram](img/Use&#32;case&#32;diagram.png "Use case diagram")
 
 
