@@ -47,7 +47,7 @@ This enables them to spend more time discussing and exchanging ideas and less ti
 
 Use case image
 
-![Use case diagram](img/use-case-diagram.png "Use case diagram")
+![Use case diagram](img/Use&#32;case&#32;diagram.png "Use case diagram")
 
 
 #### View Profile:
@@ -317,7 +317,7 @@ Effort:
 
 ### Domain model
 
-![UML](img/domain-model.png "UML Class Diagram")
+![UML](img/domain&#32;model.png "UML Class Diagram")
 
 
 ---
