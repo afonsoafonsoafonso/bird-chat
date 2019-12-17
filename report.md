@@ -317,6 +317,34 @@ Effort:
 
 ![UML](img/domain&#32;model.png "UML Class Diagram")
 
+---
+## Architecture and Design
+
+
+### Logical architecture
+
+
+### Physical architecture
+
+ 
+### Prototype
+
+
+
+---
+
+## Implementation
+
+
+
+---
+## Test
+
+
+
+---
+## Configuration and change management
+
 
 ---
 ## Project Management
