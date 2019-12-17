@@ -44,7 +44,7 @@ We know our demographic: the tech and software people are one of the most passio
 
 ### Use case diagram 
 
-![Use case diagram](img/Use&#32;case&#32;diagram.png "Use case diagram")
+![Use case diagram](../img/Use&#32;case&#32;diagram.png "Use case diagram")
 
 
 #### View Profile:
@@ -177,7 +177,7 @@ As a conference attendee, I want to be able to view my own profile, so that I ge
 
 **User interface mockup**
 
-![Mockup](img/mockup1.png "UI Mockup 1")
+![Mockup](../img/mockup1.png "UI Mockup 1")
 
 **Acceptance tests**
 
@@ -201,7 +201,7 @@ As a conference attendee, I want to be able to view new events, so that I can ch
 
 **User interface mockup**
 
-![Mockup](img/mockup2.png "UI Mockup 2")
+![Mockup](../img/mockup2.png "UI Mockup 2")
 
 **Acceptance tests**
 
@@ -220,8 +220,8 @@ As a conference attendee, I want to be able to view an event's details, so that 
 
 **User interface mockup**
 
-![Mockup](img/mockup3-1.png "UI Mockup 3")
-![Mockup](img/mockup3-2.png "UI Mockup 3")
+![Mockup](../img/mockup3-1.png "UI Mockup 3")
+![Mockup](../img/mockup3-2.png "UI Mockup 3")
 
 **Acceptance tests**
 
@@ -240,7 +240,7 @@ As a conference attendee, I want to be able to join an event, so that I can meet
 
 **User interface mockup**
 
-![Mockup](img/mockup4.png "UI Mockup 4")
+![Mockup](../img/mockup4.png "UI Mockup 4")
 
 **Acceptance tests**
 
@@ -260,7 +260,7 @@ As a conference attendee, I want to be able to use an events chat, so that I can
 
 **User interface mockup**
 
-![Mockup](img/mockup5.png "UI Mockup 5")
+![Mockup](../img/mockup5.png "UI Mockup 5")
 
 **Acceptance tests**
 
@@ -279,7 +279,7 @@ As a conference attendee, I want to be able to create a new event, so that I can
 
 **User interface mockup**
 
-![Mockup](img/mockup6.png "UI Mockup 6")
+![Mockup](../img/mockup6.png "UI Mockup 6")
 
 **Acceptance tests**
 
@@ -298,7 +298,7 @@ As a conference attendee, I want to be able to view the events that I've already
 
 **User interface mockup**
 
-![Mockup](img/mockup7.png "UI Mockup 7")
+![Mockup](../img/mockup7.png "UI Mockup 7")
 
 **Acceptance tests**
 
@@ -314,7 +314,7 @@ Effort:
 
 ### Domain model
 
-![UML](img/domain&#32;model.png "UML Class Diagram")
+![UML](../img/domain&#32;model.png "UML Class Diagram")
 
 ---
 ## Architecture and Design
