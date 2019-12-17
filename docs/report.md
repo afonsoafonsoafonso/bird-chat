@@ -324,12 +324,12 @@ Effort:
 Not implemented. Depois escrever qualquer cena aqui ou remover (???)
 
 
-### Story #8
+#### Story #8
 
 Não faz sentido tendo em conta que os perfis já vêm criados da base de dados da conferência. Escrever quallquer coisa aqui depois
 
 
-### Story #9
+#### Story #9
 
 As a conference attendee, I want to see other group members' profiles.
 
