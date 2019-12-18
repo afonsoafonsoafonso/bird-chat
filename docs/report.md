@@ -424,6 +424,7 @@ Effort: M
 
 ---
 ## Architecture and Design
+
 The BirdChat app starts with a main page that displays every new event that the user is not yet a part of. From here he can access its profile page via the sidebar, create a new event via button, access the 'My Events' page using the navbar or redirecting to an event chat page by clicking on the event's card title. On an event chat page the user can see what's being currently discussed as well as join that event with a press of a button. Joining an event enables the user to use its chat to interact with its members. From here, the user can access the event's details page, where all its information regarding, meeting hours, description, members, and creator can be found. From the main page, the event creation page can be acessed, where a form displaying every necessary information for the creation of an event for the user to fill.
 
 ### Logical architecture
@@ -434,7 +435,7 @@ The BirdChat app starts with a main page that displays every new event that the 
  
 ### Prototype
 
-
+For our application prototype we 
 
 ---
 
@@ -445,15 +446,27 @@ Product increments can be found [here](https://github.com/softeng-feup/open-cx-t
 ---
 ## Test
 
+Automated tests using gherkin were planned to be implemented so that the application performed as intended, but due to time management issues only two are effectively done: 
+* Open user profile page
+* Home to chat to details to creator profile
 
+Although few, we plan to implement a few more:
+* Check new events
+* Check my events
+* View event chat
+* Join event
+* View event's details page
+* Visit attendees profile page
 
 ---
 ## Configuration and change management
 
+Configuration and change management are key activities to control change to, and maintain the integrity of, a project’s artifacts (code, models, documents).
+
+For the purpose of ESOF, we will use a very simple approach, just to manage feature requests, bug fixes, and improvements, using GitHub issues and following the [GitHub](https://guides.github.com/introduction/flow/) flow.
 
 ---
 ## Project Management
 
 Links to tools that we are using to help us in **project management**:
  * [Trello](https://trello.com/b/NQOzfzT2/birdchat)
-
