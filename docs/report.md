@@ -187,9 +187,9 @@ As a conference attendee, I want to be able to view new events, so that I can ch
 
 **Value and effort**
 
-Value:
+Value: Must have.
 
-Effort:
+Effort: M
 
 
 #### Story #2
@@ -212,9 +212,9 @@ As a conference attendee, I want to be able to create a new event, so that I can
 
 **Value and effort**
 
-Value:
+Value: Must have
 
-Effort:
+Effort: M
 
 
 #### Story #3
@@ -235,9 +235,9 @@ As a conference attendee, I want to be able to view the events that I've already
 
 **Value and effort**
 
-Value:
+Value: Must have
 
-Effort:
+Effort: M
 
 
 #### Story #4
@@ -263,9 +263,9 @@ As a conference attendee, I want to be able to view an event's details, so that 
 
 **Value and effort**
 
-Value:
+Value: Must have
 
-Effort:
+Effort: M
 
 
 #### Story #5
@@ -288,9 +288,9 @@ As a conference attendee, I want to be able to join an event, so that I can meet
 
 **Value and effort**
 
-Value:
+Value: Must have
 
-Effort:
+Effort: M
 
 
 #### Story #6
@@ -314,39 +314,83 @@ As a conference attendee, I want to be able to use an events chat, so that I can
 
 **Value and effort**
 
-Value:
+Value: Should have
 
-Effort:
+Effort: M
 
 
 #### Story #7
 
-Not implemented. Depois escrever qualquer cena aqui ou remover (???)
+As a conference attendee, I want to be able to filter the events, so that I can view the ones that interest me the most.
 
+**User interface mockup**
+
+![Mockup]( "UI Mockup")
+
+**Acceptance tests**
+
+* Given I’m a logged-in attendeee
+* When I access the home page 
+* Then the system shows me the new events that have been created
+* When I click on the search icon
+* Then the system shows me the search event page with a text bar to search and filters to apply
+
+**Value and effort**
+
+Value: Won't have
+
+Effort: L
 
 #### Story #8
 
-Não faz sentido tendo em conta que os perfis já vêm criados da base de dados da conferência. Escrever quallquer coisa aqui depois
+As a conference attendee, I want to be able to create my profile within the app, so that I can use it.
+
+**User interface mockup**
+
+![Mockup]( "UI Mockup")
+
+**Acceptance tests**
+
+* Given I’m an attendeee
+* When I access the application 
+* Then the system show me the the login page
+* When I click on the register button
+* Then the system shows me a form of information to fill so I can register myself
+
+**Value and effort**
+
+Value: Won't have
+
+Effort: L
 
 
 #### Story #9
 
-As a conference attendee, I want to see other group members' profiles.
+As a conference attendee, I want to see other group members' profiles, so that I can see their personal information.
 
 **User interface mockup**
 
-Adicionar mockup
+![Mockup]( "UI Mockup")
 
 **Acceptance tests**
 
-```
-```
+* Given I’m a logged-in attendeee
+* When I access the home page 
+* Then the system shows me the new events that have been created
+* When I click one event's title
+* Then the system shows me that event's chat page
+* When I click the event details button
+* Then the system show me that event's details page
+* When I click the joined users list arrow
+* Then the system shows me every attendee that has joined the event
+* When I click on their name
+* Then the system shows me their profile page with their personal information
 
 **Value and effort**
 
-Value:
+Value: Could have
 
-Effort:
+Effort: M
 
 
 #### Story #10
@@ -369,9 +413,9 @@ Scenario: In home page, navigate to user profile page
 
 **Value and effort**
 
-Value:
+Value: Could have
 
-Effort:
+Effort: M
 
 
 ### Domain model
