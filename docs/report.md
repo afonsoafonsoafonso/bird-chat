@@ -435,8 +435,6 @@ The BirdChat app starts with a main page that displays every new event that the 
  
 ### Prototype
 
-For our application prototype we 
-
 ---
 
 ## Implementation
