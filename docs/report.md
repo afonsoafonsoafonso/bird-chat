@@ -440,7 +440,7 @@ The BirdChat app starts with a main page that displays every new event that the 
 
 ## Implementation
 
-
+Product increments can be found [here](https://github.com/softeng-feup/open-cx-teamwip/releases)
 
 ---
 ## Test
