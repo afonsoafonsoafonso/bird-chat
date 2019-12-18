@@ -370,7 +370,7 @@ As a conference attendee, I want to see other group members' profiles, so that I
 
 **User interface mockup**
 
-![Mockup]( "UI Mockup")
+![Mockup](../img/mockup-8.png "UI Mockup")
 
 **Acceptance tests**
 
