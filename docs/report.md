@@ -427,6 +427,7 @@ Effort: M
 
 The BirdChat app starts with a main page that displays every new event that the user is not yet a part of. From here he can access its profile page via the sidebar, create a new event via button, access the 'My Events' page using the navbar or redirecting to an event chat page by clicking on the event's card title. On an event chat page the user can see what's being currently discussed as well as join that event with a press of a button. Joining an event enables the user to use its chat to interact with its members. From here, the user can access the event's details page, where all its information regarding, meeting hours, description, members, and creator can be found. From the main page, the event creation page can be acessed, where a form displaying every necessary information for the creation of an event for the user to fill.
 
+TODO: talk about mvc
 ### Logical architecture
 
 
