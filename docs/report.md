@@ -427,7 +427,13 @@ Effort: M
 
 The BirdChat app starts with a main page that displays every new event that the user is not yet a part of. From here he can access its profile page via the sidebar, create a new event via button, access the 'My Events' page using the navbar or redirecting to an event chat page by clicking on the event's card title. On an event chat page the user can see what's being currently discussed as well as join that event with a press of a button. Joining an event enables the user to use its chat to interact with its members. From here, the user can access the event's details page, where all its information regarding, meeting hours, description, members, and creator can be found. From the main page, the event creation page can be acessed, where a form displaying every necessary information for the creation of an event for the user to fill.
 
-TODO: talk about mvc
+For the development of bird chat we used the Mode-View-Controller architectural pattern since it's a very useful pattern when devolping apps. As the name suggests, this architectural pattern can be divided in three parts: Model, View and Controller.
+
+* Model - Represents the data of the application. It's represented by the database mock that we used in the app.
+* View - Displays the model data and sends actions to the controller, this can be observer on the pages of flutter.
+* The controller provides model data to the view, and interprets user actions. On the context of BirdChat this can be seen as the logic behind the views that interprates user action and modifies the models accordingly.
+
+![MVC](../img/mvc.png "MVC Diagram")
 ### Logical architecture
 
 
