@@ -31,12 +31,12 @@ Thank you!
 ---
 ## Product Vision
 
-This product's aim is to facilitate informal and relaxed discussions, meet-ups and hangouts in conferences, providing a way for people with similar interests to find and meet each other.
+This product's aim is to promote informal and relaxed discussions, meet-ups and hangouts in conferences, providing a way for people with similar interests to find and meet each other.
 
 ---
 ## Elevator Pitch
 
-We know our demographic: the tech and software people are one of the most passionate people about what they do that we can find nowaways. And this is a really good good thing, but this can lead to some underwhelming socialization aspects in big conferences and other similar events. What can happen is that discussions, talks and meet-ups between conference antendees eventually ends up being very tech-based and information heavy, which can be tiring. What if you just want to relax, hangout and talk about whatever you want to talk about? That's why we made BirdChat: a tool where people can arrange social events to talk about certain topics or visit someplace in the city or do a certain activity. There are no limits! You can talk about the conference activities, events, talk about football, music, go visit a museum on downtown or simply go get some dinner and some beers and see where that leads you to. Your call!
+We know our demographic: the tech and software people are one of the most passionate people about what they do that we can find nowaways. And this is a really good thing, but this can lead to some underwhelming socialization aspects in big conferences and other similar events. What can happen is that discussions, talks and meet-ups between conference antendees eventually ends up being very tech-based and information heavy, which can be tiring. What if you just want to relax, hangout and talk about whatever you want to talk about? That's why we made BirdChat: a tool where people can arrange social events to talk about certain topics or visit someplace in the city or do a certain activity. There are no limits! You can talk about the conference activities, events, talk about football, music, go visit a museum on downtown or simply go get some dinner and some beers and see where that leads you to. Your call!
 
 
 ---
@@ -427,7 +427,7 @@ For the development of bird chat we need to plan  an arquitecture having in mind
   * Simultaneous development -  since we had a team of 4 working 
   * Ease of Modification - because the project plan could change at any time depending on the backend
   * Code reusability 
-  * Multiple Views for the same models- since the app could display the same information in diferent ways
+  * Multiple Views for the same models- since the app could display the same information in diferent ways.
 
 
 To achieve this we opted for the Mode-View-Controller architectural pattern since it's a very useful pattern when devolping apps. As the name suggests, this architectural pattern can be divided in three parts: Model, View and Controller.
@@ -446,19 +446,25 @@ To achieve this we opted for the Mode-View-Controller architectural pattern sinc
 For this project, out intent was to design an app that promoted confraternization between the participants of a conference. To achieve this goal, we opted for flutter for it's simplicity which allowed to quickly get a basic app up and running and to focus on the features we wanted to implement. In addiction, flutter seemed easy to learn for unxeperience people in mobile developent like us.
 
 The main components for the project are the user's device and the database server.
+#### Deployment diagram:
+<img src="../img/DeploymentDiagram.png" >
+
+
+As stated before we used the MVC pattern. To accomplish this, we divided the project into three logical components, Controller, Model and View:
+
+* The view is divided into pages and widgets and they are used to represent the information present on the models.
+* The model stores all the information into a logical structure to be used by the other components. It gets its information by connecting to a database server.
+* The controller processes actions trigger by the view and updates the model accordingly (ex:clicking a button sends an action to a controller which makes the app go to a different page).
+
 
 #### Component Diagram
 <img src="../img/ComponentDiagram.png">
 
 
-#### Deployment diagram:
-<img src="../img/DeploymentDiagram.png" >
-
  
 ### Prototype
-
-
-The BirdChat app starts with a main page that displays every new event that the user is not yet a part of. From here he can access its profile page via the sidebar, create a new event via button, access the 'My Events' page using the navbar or redirecting to an event chat page by clicking on the event's card title. On an event chat page the user can see what's being currently discussed as well as join that event with a press of a button. Joining an event enables the user to use its chat to interact with its members. From here, the user can access the event's details page, where all its information regarding, meeting hours, description, members, and creator can be found. From the main page, the event creation page can be acessed, where a form displaying every necessary information for the creation of an event for the user to fill.
+For the prototype we decided to tackle both the Story #1 ("As a conference attendee, I want to be able to view new gathering events, so that I can choose which ones interest me") , and the #2("As a conference attendee, I want to be able to create a new event, so that I can chat and meet up with other attendees"), this being the core ideia of our app.
+We've created two pages for that. The first one was the home of the app which displayed the events on a list of cards with keypoints for every single one of them.  The second one was a form page designed to create events to add to that list. In addiction we also started working on the profile page and the chat part of the app.
 
 ---
 
