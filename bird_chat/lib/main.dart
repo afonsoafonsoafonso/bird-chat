@@ -15,6 +15,7 @@ class BirdChatApp extends MaterialApp {
 }
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
   await DatabaseMock.initialize();
 
