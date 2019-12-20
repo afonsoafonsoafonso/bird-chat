@@ -345,9 +345,6 @@ Effort: L
 
 As a conference attendee, I want to be able to create my profile within the app, so that I can use it.
 
-**User interface mockup**
-
-![Mockup]( "UI Mockup")
 
 **Acceptance tests**
 
@@ -425,9 +422,15 @@ Effort: M
 ---
 ## Architecture and Design
 
-The BirdChat app starts with a main page that displays every new event that the user is not yet a part of. From here he can access its profile page via the sidebar, create a new event via button, access the 'My Events' page using the navbar or redirecting to an event chat page by clicking on the event's card title. On an event chat page the user can see what's being currently discussed as well as join that event with a press of a button. Joining an event enables the user to use its chat to interact with its members. From here, the user can access the event's details page, where all its information regarding, meeting hours, description, members, and creator can be found. From the main page, the event creation page can be acessed, where a form displaying every necessary information for the creation of an event for the user to fill.
 
-For the development of bird chat we used the Mode-View-Controller architectural pattern since it's a very useful pattern when devolping apps. As the name suggests, this architectural pattern can be divided in three parts: Model, View and Controller.
+For the development of bird chat we need to plan  an arquitecture having in mind a few key points: 
+  * Simultaneous development -  since we had a team of 4 working 
+  * Ease of Modification - because the project plan could change at any time depending on the backend
+  * Code reusability 
+  * Multiple Views for the same models- since the app could display the same information in diferent ways
+
+
+To achieve this we opted for the Mode-View-Controller architectural pattern since it's a very useful pattern when devolping apps. As the name suggests, this architectural pattern can be divided in three parts: Model, View and Controller.
 
 * Model - Represents the data of the application. It's represented by the database mock that we used in the app.
 * View - Displays the model data and sends actions to the controller, this can be observer on the pages of flutter.
@@ -439,8 +442,23 @@ For the development of bird chat we used the Mode-View-Controller architectural 
 
 ### Physical architecture
 
+
+For this project, out intent was to design an app that promoted confraternization between the participants of a conference. To achieve this goal, we opted for flutter for it's simplicity which allowed to quickly get a basic app up and running and to focus on the features we wanted to implement. In addiction, flutter seemed easy to learn for unxeperience people in mobile developent like us.
+
+The main components for the project are the user's device and the database server.
+
+#### Component Diagram
+<img src="../img/ComponentDiagram.png">
+
+
+#### Deployment diagram:
+<img src="../img/DeploymentDiagram.png" >
+
  
 ### Prototype
+
+
+The BirdChat app starts with a main page that displays every new event that the user is not yet a part of. From here he can access its profile page via the sidebar, create a new event via button, access the 'My Events' page using the navbar or redirecting to an event chat page by clicking on the event's card title. On an event chat page the user can see what's being currently discussed as well as join that event with a press of a button. Joining an event enables the user to use its chat to interact with its members. From here, the user can access the event's details page, where all its information regarding, meeting hours, description, members, and creator can be found. From the main page, the event creation page can be acessed, where a form displaying every necessary information for the creation of an event for the user to fill.
 
 ---
 
